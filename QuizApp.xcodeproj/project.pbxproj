@@ -83,6 +83,7 @@
 		1A5C848A1D477868004018C3 /* QuizApp */ = {
 			isa = PBXGroup;
 			children = (
+				1AFC2F931D478B4800CDDCE7 /* Models */,
 				1A5C84AE1D4779F8004018C3 /* ViewControllers */,
 				1A5C848B1D477868004018C3 /* AppDelegate.swift */,
 				1A5C848D1D477868004018C3 /* ViewController.swift */,
@@ -111,6 +112,13 @@
 				1A5C84B11D477B12004018C3 /* QuizTableViewCell.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		1AFC2F931D478B4800CDDCE7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -410,6 +418,7 @@
 				1A5C84AA1D477868004018C3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1A5C84AB1D477868004018C3 /* Build configuration list for PBXNativeTarget "QuizAppTests" */ = {
 			isa = XCConfigurationList;
@@ -418,6 +427,7 @@
 				1A5C84AD1D477868004018C3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
