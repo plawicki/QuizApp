@@ -111,7 +111,7 @@
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="e69-IG-h5R">
                                 <rect key="frame" x="16" y="57" width="288" height="2"/>
                             </progressView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tru-i5-bqP" userLabel="Answer2">
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tru-i5-bqP" userLabel="Answer2">
                                 <rect key="frame" x="16" y="117" width="288" height="30"/>
                                 <state key="normal" title="Answer 2">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -120,7 +120,7 @@
                                     <action selector="clickAnswer:" destination="DM7-mv-2WL" eventType="touchUpInside" id="LaX-1I-LeD"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GfZ-Ik-oLK" userLabel="Answer3">
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GfZ-Ik-oLK" userLabel="Answer3">
                                 <rect key="frame" x="16" y="155" width="288" height="30"/>
                                 <state key="normal" title="Answer 3">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -129,7 +129,7 @@
                                     <action selector="clickAnswer:" destination="DM7-mv-2WL" eventType="touchUpInside" id="Pi8-DH-hCT"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eAA-jo-AzO" userLabel="Answer4">
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eAA-jo-AzO" userLabel="Answer4">
                                 <rect key="frame" x="16" y="193" width="288" height="30"/>
                                 <state key="normal" title="Answer 4">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>

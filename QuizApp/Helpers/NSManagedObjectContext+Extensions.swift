@@ -13,4 +13,14 @@ extension NSManagedObjectContext {
         guard let obj = NSEntityDescription.insertNewObjectForEntityForName(A.entityName, inManagedObjectContext: self) as? A else { fatalError("NSManagedObjectContext error, improper object type") }
         return obj
     }
+    
+    public func saveOrRollback() -> Bool {
+        do {
+            try save()
+            return true
+        } catch {
+            rollback()
+            return false
+        }
+    }
 }

@@ -14,7 +14,7 @@ import CoreData
 
 extension Answer {
 
-    @NSManaged var order: NSNumber?
+    @NSManaged var order: NSNumber
     @NSManaged var text: String?
     @NSManaged var isCorrect: NSNumber?
     @NSManaged var question: Question?

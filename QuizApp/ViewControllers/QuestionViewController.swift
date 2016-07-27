@@ -21,7 +21,6 @@ class QuestionViewController: UIViewController {
     
     var currentQuestionNumber = 0
     var correctAnswers = 0
-    var lastQuestion = 0
     
     var quiz: Quiz?
     var questions: Array<Question> = []
@@ -34,22 +33,51 @@ class QuestionViewController: UIViewController {
         self.quiz = quiz
         self.questions = (quiz.questions!.allObjects) as! [Question]
         self.correctAnswers = quiz.correctAnswers as! Int
-        self.lastQuestion = quiz.lastQuestionOrderNumber as! Int
-        
+
         questions.sortInPlace({Int($0.order) < Int($1.order)})
         
-        self.currentQuestion = questions[self.lastQuestion]
+        self.answers = (currentQuestion?.answers?.allObjects) as! [Answer]
+        
+        answers.sortInPlace({Int($0.order) < Int($1.order)})
+        
+        self.currentQuestionNumber = (quiz.lastQuestionOrderNumber?.integerValue)!
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func viewDidLoad() {
+    @IBAction func clickAnswer(sender: UIButton) {
+        let answerNumber = sender.tag
         
+        if let correct = answers[answerNumber].isCorrect {
+            if correct.boolValue { self.correctAnswers += 1 }
+        }
+        
+        self.currentQuestionNumber += 1
+        
+        goToNextQuestionOrEnd()
     }
     
-    @IBAction func clickAnswer(sender: UIButton) {
+    private func goToNextQuestionOrEnd() {
+        self.currentQuestion = questions[self.currentQuestionNumber]
+
+        self.answer1.setTitle(answers[0].text, forState: UIControlState.Normal)
+        self.answer2.setTitle(answers[1].text, forState: UIControlState.Normal)
+        self.answer3.setTitle(answers[2].text, forState: UIControlState.Normal)
+        self.answer4.setTitle(answers[3].text, forState: UIControlState.Normal)
         
+        saveQuizStatus()
+    }
+    
+    private func saveQuizStatus() {
+        quiz?.result = correctAnswers
+        quiz?.lastQuestionOrderNumber = currentQuestion?.order
+        
+        if (currentQuestion?.order.intValue)! == ((quiz?.numberOfQuestions.intValue)! - 1) {
+            quiz?.lastQuestionOrderNumber = 0
+        }
+        
+        context.saveOrRollback()
     }
 }
