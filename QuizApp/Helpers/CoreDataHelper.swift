@@ -9,6 +9,11 @@
 import CoreData
 import UIKit
 
+public final class CoreDataHelper {
+    public static func getManagedObjectContext() ->  NSManagedObjectContext {
+        return (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+    }
+}
 
 
 extension NSManagedObjectContext {

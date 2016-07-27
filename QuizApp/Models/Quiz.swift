@@ -44,7 +44,7 @@ public final class Quiz: ManagedObject {
         return quiz
     }
 }
-
+	
 extension Quiz: KeyCodable {
     public enum Keys: String {
         case Id = "id"
