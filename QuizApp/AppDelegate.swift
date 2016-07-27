@@ -17,9 +17,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        Quiz.insertIntoContext(managedObjectContext, id: "1", title: "New Quiz", numberOfQuestions: 0, result: nil, imageUrl: "http://kot.net.pl/res/500x500_czy-koty-rozumieja-co-do-nich-mowimy-atdb.jpg", questions: nil, correctAnswers: nil, lastQuestionOrderNumber: nil)
+        Quiz.insertIntoContext(managedObjectContext, id: "1", title: "New Quiz", numberOfQuestions: 1, result: nil, imageUrl: "http://kot.net.pl/res/500x500_czy-koty-rozumieja-co-do-nich-mowimy-atdb.jpg", questions: nil, correctAnswers: nil, lastQuestionOrderNumber: nil)
         Question.insertIntoContext(managedObjectContext, order: 0, text: "Do you like pancakes", quizId: "1", answers: nil)
         Answer.insertIntoContext(managedObjectContext, order: 0, questionOrder: 0, quizId: "1", text: "YES!!!1", isCorrect: true)
+        Answer.insertIntoContext(managedObjectContext, order: 1, questionOrder: 0, quizId: "1", text: "YES!!!1", isCorrect: true)
+        Answer.insertIntoContext(managedObjectContext, order: 2, questionOrder: 0, quizId: "1", text: "YES!!!1", isCorrect: true)
+        Answer.insertIntoContext(managedObjectContext, order: 3, questionOrder: 0, quizId: "1", text: "NO!!!1", isCorrect: false)
         
         return true
     }

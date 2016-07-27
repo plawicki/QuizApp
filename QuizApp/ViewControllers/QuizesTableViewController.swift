@@ -113,15 +113,22 @@ class QuizesTableViewController: UITableViewController, NSFetchedResultsControll
         }
     }
     
-
-    /*
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let quiz: Quiz = self.fetchedResultsController.objectAtIndexPath(indexPath) as! Quiz
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let questionVC = storyboard.instantiateViewControllerWithIdentifier("QuestionViewController") as! QuestionViewController
+        questionVC.quiz = quiz
+        
+        self.presentViewController(questionVC, animated: true, completion: nil)
+    }
+    
      // MARK: - Navigation
-
+/*
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        let destionationViewController: QuestionViewController = segue.destinationViewController as QuestionViewController
+        destionationViewController.quiz = 
     }
-    */
-
+ */
 }

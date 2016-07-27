@@ -15,27 +15,27 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="quizCell" rowHeight="150" id="sdA-bj-NG9" customClass="QuizTableViewCell" customModule="QuizApp" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="quizCell" rowHeight="150" id="sdA-bj-NG9" customClass="QuizTableViewCell" customModule="QuizApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="320" height="150"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sdA-bj-NG9" id="LSP-ih-ujd">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="149.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="149.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sV6-Ok-66T">
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sV6-Ok-66T">
                                             <rect key="frame" x="8" y="8" width="304" height="29"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="exV-3S-cbv">
+                                        <imageView userInteractionEnabled="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="exV-3S-cbv">
                                             <rect key="frame" x="122" y="40" width="75" height="69.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="75" id="1Zh-IE-bWt"/>
                                                 <constraint firstAttribute="height" constant="70" id="rpU-fS-kmJ"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="102" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e3a-Ga-j8I">
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="102" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e3a-Ga-j8I">
                                             <rect key="frame" x="8" y="120" width="304" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -93,7 +93,7 @@
         <!--Question View Controller-->
         <scene sceneID="Q7i-0u-1yD">
             <objects>
-                <viewController id="DM7-mv-2WL" customClass="QuestionViewController" customModule="QuizApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="QuestionViewController" id="DM7-mv-2WL" customClass="QuestionViewController" customModule="QuizApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="eJp-br-YBY"/>
                         <viewControllerLayoutGuide type="bottom" id="iYC-1d-ULd"/>
@@ -170,6 +170,7 @@
                             <constraint firstItem="2BN-1n-JMb" firstAttribute="trailing" secondItem="uAa-lL-jxk" secondAttribute="trailingMargin" id="xIt-zu-8Jb"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="WPW-7t-eRx"/>
                     <connections>
                         <outlet property="answer1" destination="7Tn-xV-IhN" id="prW-60-KLv"/>
                         <outlet property="answer2" destination="tru-i5-bqP" id="oFh-ZB-adi"/>

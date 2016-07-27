@@ -19,32 +19,31 @@ class QuestionViewController: UIViewController {
     
     let context: NSManagedObjectContext = CoreDataHelper.getManagedObjectContext()
     
+    var quiz: Quiz?
+    
     var currentQuestionNumber = 0
     var correctAnswers = 0
+    var numberOfQuestions = 0
     
-    var quiz: Quiz?
     var questions: Array<Question> = []
     var answers: Array<Answer> = []
     var currentQuestion: Question?
     
-    init(quiz: Quiz) {
-        super.init(nibName: nil, bundle: nil)
+    override func viewDidLoad() {
+        self.currentQuestionNumber = (quiz!.lastQuestionOrderNumber?.integerValue)!
+        self.questions = (quiz!.questions!.allObjects) as! [Question]
+        self.currentQuestion = questions[self.currentQuestionNumber]
+        self.correctAnswers = quiz!.correctAnswers as! Int
         
-        self.quiz = quiz
-        self.questions = (quiz.questions!.allObjects) as! [Question]
-        self.correctAnswers = quiz.correctAnswers as! Int
+        self.numberOfQuestions = (quiz?.numberOfQuestions.integerValue)!
 
         questions.sortInPlace({Int($0.order) < Int($1.order)})
         
-        self.answers = (currentQuestion?.answers?.allObjects) as! [Answer]
+        self.answers = (currentQuestion!.answers?.allObjects) as! [Answer]
         
         answers.sortInPlace({Int($0.order) < Int($1.order)})
         
-        self.currentQuestionNumber = (quiz.lastQuestionOrderNumber?.integerValue)!
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        updateQuestion()
     }
     
     @IBAction func clickAnswer(sender: UIButton) {
@@ -56,12 +55,17 @@ class QuestionViewController: UIViewController {
         
         self.currentQuestionNumber += 1
         
-        goToNextQuestionOrEnd()
+        if self.currentQuestionNumber < self.numberOfQuestions {
+            updateQuestion()
+        } else {
+            print("koniec")
+        }
     }
     
-    private func goToNextQuestionOrEnd() {
+    private func updateQuestion() {
         self.currentQuestion = questions[self.currentQuestionNumber]
 
+        self.questionLabel.text = self.currentQuestion?.text
         self.answer1.setTitle(answers[0].text, forState: UIControlState.Normal)
         self.answer2.setTitle(answers[1].text, forState: UIControlState.Normal)
         self.answer3.setTitle(answers[2].text, forState: UIControlState.Normal)
