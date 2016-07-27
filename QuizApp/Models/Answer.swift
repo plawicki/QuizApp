@@ -49,7 +49,7 @@ public final class Answer: ManagedObject {
 extension Answer: KeyCodable {
     public enum Keys: String {
         case Order = "order"
-        case Text = "Text"
+        case Text = "text"
         case IsCorrect = "isCorrect"
         case Question = "question"
     }

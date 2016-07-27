@@ -16,8 +16,6 @@ class QuizTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-    
-    
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -35,8 +33,12 @@ extension QuizTableViewCell: ConfigurableCell {
         }
         
         if let result = quiz.result {
-            quizResult.text = result.stringValue
+            self.setResult(result, numberOfQuestions: quiz.numberOfQuestions)
         }
+    }
+    
+    private func setResult(result: NSNumber, numberOfQuestions: NSNumber)  {
+        quizResult.text = "Last result: " + result.stringValue + "/" + numberOfQuestions.stringValue
     }
 }
 

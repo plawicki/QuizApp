@@ -13,8 +13,10 @@
         <relationship name="quiz" maxCount="1" deletionRule="Nullify" destinationEntity="Quiz" inverseName="questions" inverseEntity="Quiz" syncable="YES"/>
     </entity>
     <entity name="Quiz" representedClassName=".Quiz" syncable="YES">
+        <attribute name="correctAnswers" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="id" attributeType="String" syncable="YES"/>
         <attribute name="imageUrl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastQuestionOrderNumber" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="numberOfQuestions" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="result" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="title" attributeType="String" syncable="YES"/>
@@ -23,6 +25,6 @@
     <elements>
         <element name="Answer" positionX="-36" positionY="54" width="128" height="105"/>
         <element name="Question" positionX="-54" positionY="27" width="128" height="105"/>
-        <element name="Quiz" positionX="-63" positionY="-18" width="128" height="135"/>
+        <element name="Quiz" positionX="-63" positionY="-18" width="128" height="165"/>
     </elements>
 </model>

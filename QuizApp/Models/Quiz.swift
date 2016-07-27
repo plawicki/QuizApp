@@ -11,7 +11,7 @@ import CoreData
 
 
 public final class Quiz: ManagedObject {
-    public static func insertIntoContext(moc: NSManagedObjectContext, id: String, title: String, numberOfQuestions: Int, result: Int?, imageUrl: String?, questions: Set<Question>?) -> Quiz {
+    public static func insertIntoContext(moc: NSManagedObjectContext, id: String, title: String, numberOfQuestions: Int, result: Int?, imageUrl: String?, questions: Set<Question>?, correctAnswers: Int?, lastQuestionOrderNumber: Int?) -> Quiz {
         let quiz: Quiz = moc.insertObject()
         quiz.id = id
         quiz.title = title
@@ -27,6 +27,14 @@ public final class Quiz: ManagedObject {
         
         if let questions = questions {
             quiz.questions = questions
+        }
+        
+        if let correctAnswers = correctAnswers {
+            quiz.correctAnswers = correctAnswers
+        }
+        
+        if let lastQuestionOrderNumber = lastQuestionOrderNumber {
+            quiz.lastQuestionOrderNumber = lastQuestionOrderNumber
         }
         
         return quiz

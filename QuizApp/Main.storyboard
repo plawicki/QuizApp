@@ -171,6 +171,10 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="answer1" destination="7Tn-xV-IhN" id="prW-60-KLv"/>
+                        <outlet property="answer2" destination="tru-i5-bqP" id="oFh-ZB-adi"/>
+                        <outlet property="answer3" destination="GfZ-Ik-oLK" id="yC9-QZ-sd2"/>
+                        <outlet property="answer4" destination="eAA-jo-AzO" id="obV-cr-a3L"/>
                         <outlet property="progressBar" destination="e69-IG-h5R" id="fSy-vz-yXm"/>
                         <outlet property="questionLabel" destination="2BN-1n-JMb" id="cdc-la-cLg"/>
                     </connections>
