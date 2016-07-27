@@ -6,7 +6,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
+        <!--Quizz App-->
         <scene sceneID="dIG-hv-BFS">
             <objects>
                 <tableViewController autoresizesArchivedViewToFullSize="NO" id="bfY-n9-IjZ" customClass="QuizesTableViewController" customModule="QuizApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -63,7 +63,7 @@
                             <outlet property="delegate" destination="bfY-n9-IjZ" id="xSn-Sd-N7W"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="klv-fJ-hvj"/>
+                    <navigationItem key="navigationItem" title="Quizz App" id="klv-fJ-hvj"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7w6-AV-Nau" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -84,6 +84,95 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3qN-wX-O7D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-140.80000000000001" y="227.19999999999996"/>
+        </scene>
+        <!--Question View Controller-->
+        <scene sceneID="Q7i-0u-1yD">
+            <objects>
+                <viewController id="DM7-mv-2WL" customClass="QuestionViewController" customModule="QuizApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="eJp-br-YBY"/>
+                        <viewControllerLayoutGuide type="bottom" id="iYC-1d-ULd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="uAa-lL-jxk">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2BN-1n-JMb">
+                                <rect key="frame" x="16" y="28" width="288" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="e69-IG-h5R">
+                                <rect key="frame" x="16" y="57" width="288" height="2"/>
+                            </progressView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tru-i5-bqP" userLabel="Answer2">
+                                <rect key="frame" x="16" y="117" width="288" height="30"/>
+                                <state key="normal" title="Answer 2">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="clickAnswer:" destination="DM7-mv-2WL" eventType="touchUpInside" id="LaX-1I-LeD"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GfZ-Ik-oLK" userLabel="Answer3">
+                                <rect key="frame" x="16" y="155" width="288" height="30"/>
+                                <state key="normal" title="Answer 3">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="clickAnswer:" destination="DM7-mv-2WL" eventType="touchUpInside" id="Pi8-DH-hCT"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eAA-jo-AzO" userLabel="Answer4">
+                                <rect key="frame" x="16" y="193" width="288" height="30"/>
+                                <state key="normal" title="Answer 4">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="clickAnswer:" destination="DM7-mv-2WL" eventType="touchUpInside" id="pw3-5x-bzp"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Tn-xV-IhN" userLabel="Answer1">
+                                <rect key="frame" x="16" y="79" width="288" height="30"/>
+                                <state key="normal" title="Answer 1">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="clickAnswer:" destination="DM7-mv-2WL" eventType="touchUpInside" id="xtv-gb-2dj"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="2BN-1n-JMb" firstAttribute="leading" secondItem="uAa-lL-jxk" secondAttribute="leadingMargin" id="1er-3i-0zI"/>
+                            <constraint firstItem="tru-i5-bqP" firstAttribute="top" secondItem="7Tn-xV-IhN" secondAttribute="bottom" constant="8" id="1kz-rg-XLc"/>
+                            <constraint firstItem="e69-IG-h5R" firstAttribute="top" secondItem="2BN-1n-JMb" secondAttribute="bottom" constant="8" symbolic="YES" id="8Wi-7s-dpY"/>
+                            <constraint firstItem="tru-i5-bqP" firstAttribute="trailing" secondItem="uAa-lL-jxk" secondAttribute="trailingMargin" id="B4Y-7Y-III"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="e69-IG-h5R" secondAttribute="trailing" id="CQ1-1v-9cS"/>
+                            <constraint firstItem="GfZ-Ik-oLK" firstAttribute="top" secondItem="tru-i5-bqP" secondAttribute="bottom" constant="8" id="DKG-xR-hYN"/>
+                            <constraint firstItem="2BN-1n-JMb" firstAttribute="top" secondItem="eJp-br-YBY" secondAttribute="bottom" constant="8" id="FMt-Ha-7vM"/>
+                            <constraint firstItem="GfZ-Ik-oLK" firstAttribute="trailing" secondItem="uAa-lL-jxk" secondAttribute="trailingMargin" id="Ngu-3Z-rZC"/>
+                            <constraint firstItem="eAA-jo-AzO" firstAttribute="top" secondItem="GfZ-Ik-oLK" secondAttribute="bottom" constant="8" id="UAv-hQ-WdC"/>
+                            <constraint firstItem="eAA-jo-AzO" firstAttribute="trailing" secondItem="uAa-lL-jxk" secondAttribute="trailingMargin" id="YVc-er-hV9"/>
+                            <constraint firstItem="7Tn-xV-IhN" firstAttribute="leading" secondItem="uAa-lL-jxk" secondAttribute="leadingMargin" id="a3O-7J-5pv"/>
+                            <constraint firstItem="eAA-jo-AzO" firstAttribute="leading" secondItem="uAa-lL-jxk" secondAttribute="leadingMargin" id="aik-Sh-06s"/>
+                            <constraint firstItem="7Tn-xV-IhN" firstAttribute="trailing" secondItem="uAa-lL-jxk" secondAttribute="trailingMargin" id="o1L-U8-215"/>
+                            <constraint firstItem="GfZ-Ik-oLK" firstAttribute="leading" secondItem="uAa-lL-jxk" secondAttribute="leadingMargin" id="oU4-Cj-EMd"/>
+                            <constraint firstItem="e69-IG-h5R" firstAttribute="leading" secondItem="uAa-lL-jxk" secondAttribute="leadingMargin" id="qt7-ad-MOI"/>
+                            <constraint firstItem="tru-i5-bqP" firstAttribute="leading" secondItem="uAa-lL-jxk" secondAttribute="leadingMargin" id="rIy-FE-XVA"/>
+                            <constraint firstItem="7Tn-xV-IhN" firstAttribute="top" secondItem="e69-IG-h5R" secondAttribute="bottom" constant="20" id="uGe-5A-qvx"/>
+                            <constraint firstItem="2BN-1n-JMb" firstAttribute="trailing" secondItem="uAa-lL-jxk" secondAttribute="trailingMargin" id="xIt-zu-8Jb"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="progressBar" destination="e69-IG-h5R" id="fSy-vz-yXm"/>
+                        <outlet property="questionLabel" destination="2BN-1n-JMb" id="cdc-la-cLg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gSR-1i-Ovf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-145" y="918"/>
         </scene>
     </scenes>
 </document>
