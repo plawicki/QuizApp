@@ -28,7 +28,7 @@ extension UIImageView {
     }
     
     private func getImageNameFromUrl(urlString: String) -> String? {
-        guard let imageName = NSURL(string: urlString)?.query?.componentsSeparatedByString("/").last else {
+        guard let imageName = urlString.componentsSeparatedByString("/").last else {
             print("ImageManager error, Cannot get image name from url")
             return nil
         }
@@ -77,7 +77,7 @@ extension UIImageView {
     private func setImage(image: UIImage?) {
         dispatch_async(dispatch_get_main_queue(), {
             if let image = image {
-                self.setImage(image)
+                self.image = image
             }
         })
     }

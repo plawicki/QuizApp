@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1A5C848C1D477868004018C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5C848B1D477868004018C3 /* AppDelegate.swift */; };
-		1A5C848E1D477868004018C3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A5C848D1D477868004018C3 /* ViewController.swift */; };
 		1A5C84941D477868004018C3 /* QuizApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1A5C84921D477868004018C3 /* QuizApp.xcdatamodeld */; };
 		1A5C84961D477868004018C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1A5C84951D477868004018C3 /* Assets.xcassets */; };
 		1A5C84991D477868004018C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A5C84971D477868004018C3 /* LaunchScreen.storyboard */; };
@@ -39,7 +38,6 @@
 /* Begin PBXFileReference section */
 		1A5C84881D477868004018C3 /* QuizApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuizApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A5C848B1D477868004018C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1A5C848D1D477868004018C3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1A5C84931D477868004018C3 /* QuizApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = QuizApp.xcdatamodel; sourceTree = "<group>"; };
 		1A5C84951D477868004018C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1A5C84981D477868004018C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -103,7 +101,6 @@
 				1AFC2F931D478B4800CDDCE7 /* Models */,
 				1A5C84AE1D4779F8004018C3 /* ViewControllers */,
 				1A5C848B1D477868004018C3 /* AppDelegate.swift */,
-				1A5C848D1D477868004018C3 /* ViewController.swift */,
 				1A5C84951D477868004018C3 /* Assets.xcassets */,
 				1A5C84971D477868004018C3 /* LaunchScreen.storyboard */,
 				1A5C849A1D477868004018C3 /* Info.plist */,
@@ -254,7 +251,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A5C848E1D477868004018C3 /* ViewController.swift in Sources */,
 				1A5C84941D477868004018C3 /* QuizApp.xcdatamodeld in Sources */,
 				1AFC2F9E1D47966400CDDCE7 /* Quiz+CoreDataProperties.swift in Sources */,
 				1A5C84B01D477A89004018C3 /* QuizesTableViewController.swift in Sources */,
