@@ -14,8 +14,8 @@ import CoreData
 
 extension Question {
 
-    @NSManaged var order: NSNumber?
-    @NSManaged var text: String?
+    @NSManaged var order: NSNumber
+    @NSManaged var text: String
     @NSManaged var answers: NSSet?
     @NSManaged var quiz: Quiz?
 
