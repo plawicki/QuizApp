@@ -64,12 +64,12 @@ class QuizesTableViewController: UITableViewController, NSFetchedResultsControll
 
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cellIdentifier = "quizCell"
-        var cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath)
+        let cellIdentifier = QuizTableViewCell.quizTableViewCellIdentifier
+        let cell: QuizTableViewCell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! QuizTableViewCell
 
         let quiz = fetchedResultsController.objectAtIndexPath(indexPath) as! Quiz
 
-        self.setupCell(&cell, quiz: quiz)
+        cell.configureForObject(quiz)
         
         return cell
     }
@@ -102,29 +102,14 @@ class QuizesTableViewController: UITableViewController, NSFetchedResultsControll
             }
         case .Update:
             if let updateIndexPath = indexPath {
-                var cell = self.tableView.cellForRowAtIndexPath(updateIndexPath)
+                let cell = self.tableView.cellForRowAtIndexPath(updateIndexPath)
                 let quiz: Quiz = self.fetchedResultsController.objectAtIndexPath(updateIndexPath) as! Quiz
                 
                 if cell != nil {
-                    self.setupCell(&cell!, quiz: quiz)
+                    let tableCell = cell as! QuizTableViewCell
+                    tableCell.configureForObject(quiz)
                 }
             }
-        }
-    }
-    
-    private func setupCell(inout cell: UITableViewCell, quiz: Quiz) {
-        let titleLabel: UILabel = cell.viewWithTag(101) as! UILabel
-        let quizImageView: UIImageView = cell.viewWithTag(100) as! UIImageView
-        let resultLabel: UILabel = cell.viewWithTag(102) as! UILabel
-        
-        titleLabel.text = quiz.title
-        
-        if let imgUrl = quiz.imageUrl {
-            quizImageView.imageFromUrl(imgUrl)
-        }
-        
-        if let quizResult = quiz.result {
-            resultLabel.text = quizResult.stringValue
         }
     }
     

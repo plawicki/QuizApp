@@ -9,16 +9,37 @@
 import UIKit
 
 class QuizTableViewCell: UITableViewCell {
-
+    @IBOutlet weak var quizTitle: UILabel!
+    @IBOutlet weak var quizImage: UIImageView!
+    @IBOutlet weak var quizResult: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
+    
+    
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
+}
+
+extension QuizTableViewCell: ConfigurableCell {
+    func configureForObject(quiz: Quiz) {
+        
+        quizTitle.text = quiz.title
+        
+        if let imgUrl = quiz.imageUrl {
+            quizImage.imageFromUrl(imgUrl)
+        }
+        
+        if let result = quiz.result {
+            quizResult.text = result.stringValue
+        }
+    }
+}
+
+extension  QuizTableViewCell {
+    static var quizTableViewCellIdentifier: String { return "quizCell" }
 }

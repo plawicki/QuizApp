@@ -15,7 +15,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="quizCell" rowHeight="150" id="sdA-bj-NG9">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="quizCell" rowHeight="150" id="sdA-bj-NG9" customClass="QuizTableViewCell" customModule="QuizApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="320" height="150"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sdA-bj-NG9" id="LSP-ih-ujd">
@@ -56,6 +56,11 @@
                                 <accessibility key="accessibilityConfiguration" identifier="quizCell">
                                     <bool key="isElement" value="YES"/>
                                 </accessibility>
+                                <connections>
+                                    <outlet property="quizImage" destination="exV-3S-cbv" id="Ehg-hc-mzd"/>
+                                    <outlet property="quizResult" destination="e3a-Ga-j8I" id="sF5-VK-IO8"/>
+                                    <outlet property="quizTitle" destination="sV6-Ok-66T" id="nNz-VG-Mg9"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
