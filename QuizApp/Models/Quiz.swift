@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 
-public final class Quiz: NSManagedObject {
+public final class Quiz: ManagedObject {
     public static func insertIntoContext(moc: NSManagedObjectContext, id: String, title: String, numberOfQuestions: Int, result: Int?, imageUrl: String?, questions: Set<Question>?) -> Quiz {
         let quiz: Quiz = moc.insertObject()
         quiz.id = id
@@ -34,13 +34,16 @@ public final class Quiz: NSManagedObject {
     
     static func findOrCreateQuiz(id: String, inContext moc: NSManagedObjectContext) -> Quiz {
         
-        let predicate = NSPredicate(format: "%K == %d", Keys.Id.rawValue, id)
+        let predicate = NSPredicate(format: "%K LIKE %@", Keys.Id.rawValue, id)
         
-        let quiz = findOrCreateInContext(moc,  predicate: predicate) {
+        
+        let quiz: Quiz = findOrCreateInContext(moc, matchingPredicate: predicate) {
             $0.id = id
         }
+
         return quiz
-    }}
+    }
+}
 
 extension Quiz: KeyCodable {
     public enum Keys: String {
@@ -54,5 +57,5 @@ extension Quiz: KeyCodable {
 }
 
 extension Quiz: ManagedObjectType {
-    public static var entityName:String { return "Quiz" }
+    public static var entityName: String { return "Quiz" }
 }

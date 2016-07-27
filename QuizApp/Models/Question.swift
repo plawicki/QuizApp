@@ -9,14 +9,51 @@
 import Foundation
 import CoreData
 
+public final class Question: ManagedObject {
 
-public final class Question: NSManagedObject {
-
-// Insert code here to add functionality to your managed object subclass
+    public static func insertIntoContext(moc: NSManagedObjectContext, order: Int, text: String?, quizId: String?, answers: Set<Answer>?) -> Question {
+        let question: Question = moc.insertObject()
+        question.order = order
+        
+        if let text = text {
+            question.text = text
+        }
+        
+        if let quiz = quizId {
+            question.quiz = Quiz.findOrCreateQuiz(quiz, inContext: moc)
+        }
+        
+        if let answers = answers {
+            question.answers = answers
+        }
+        
+        return question
+    }
+    
+    static func findOrCreateQuestion(quizId: String, order: Int, inContext moc: NSManagedObjectContext) -> Question {
+        let quiz: Quiz = Quiz.findOrCreateQuiz(quizId, inContext: moc)
+        
+        let predicate = NSPredicate(format: "%K == %@ AND %K == %d", Keys.Quiz.rawValue, quiz, Keys.Order.rawValue, order)
+        
+        
+        let question: Question = findOrCreateInContext(moc, matchingPredicate: predicate) {
+            $0.order = order
+        }
+        
+        return question
+    }
 
 }
 
+extension Question: KeyCodable {
+    public enum Keys: String {
+        case Order = "order"
+        case Text = "Text"
+        case Answers = "answers"
+        case Quiz = "quiz"
+    }
+}
 
 extension Question: ManagedObjectType {
-    public static var entityName: String { return "Question "}
+    public static var entityName: String { return "Question"}
 }

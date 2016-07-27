@@ -7,12 +7,24 @@
 //
 
 import UIKit
+import CoreData
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        let moc = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+        
+        Quiz.insertIntoContext(moc, id: "1", title: "New Quiz", numberOfQuestions: 1, result: nil, imageUrl: nil, questions: nil)
+        Question.insertIntoContext(moc, order: 0, text: "Do you like pancakes", quizId: "1", answers: nil)
+        Answer.insertIntoContext(moc, order: 0, questionOrder: 0, quizId: "1", text: "YES!!!1", isCorrect: true)
+        
+        var request = NSFetchRequest(entityName: "Quiz")
+
+        let results:NSArray? = try? moc.executeFetchRequest(request)
+        
+        print(results)
+    
     }
 
     override func didReceiveMemoryWarning() {

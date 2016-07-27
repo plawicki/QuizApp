@@ -20,6 +20,8 @@ extension NSManagedObjectContext {
 
 }
 
+public class ManagedObject: NSManagedObject {
+}
 
 public protocol ManagedObjectType: class {
     static var entityName: String { get }
@@ -30,7 +32,7 @@ public protocol KeyCodable {
     typealias Keys: RawRepresentable
 }
 
-extension KeyCodable where Self: NSManagedObject, Keys.RawValue == String {
+extension KeyCodable where Self: ManagedObject, Keys.RawValue == String {
     public func willAccessValueForKey(key: Keys) {
         willAccessValueForKey(key.rawValue)
     }
@@ -64,11 +66,12 @@ extension KeyCodable where Self: NSManagedObject, Keys.RawValue == String {
     }
 }
 
-extension ManagedObjectType where Self: NSManagedObject {
+extension ManagedObjectType where Self: ManagedObject {
     
-    public static func findOrCreateInContext(moc: NSManagedObjectContext,  predicate: NSPredicate) -> Self {
+    public static func findOrCreateInContext(moc: NSManagedObjectContext, matchingPredicate predicate: NSPredicate, configure: Self -> ()) -> Self {
         guard let obj = fetchInContext(moc, matchingPredicate: predicate) else {
             let newObject: Self = moc.insertObject()
+            configure(newObject)
             return newObject
         }
         return obj
