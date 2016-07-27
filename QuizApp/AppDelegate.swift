@@ -16,7 +16,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        Quiz.insertIntoContext(managedObjectContext, id: "1", title: "New Quiz", numberOfQuestions: 1, result: nil, imageUrl: "http://kot.net.pl/res/500x500_czy-koty-rozumieja-co-do-nich-mowimy-atdb.jpg", questions: nil)
+        Question.insertIntoContext(managedObjectContext, order: 0, text: "Do you like pancakes", quizId: "1", answers: nil)
+        Answer.insertIntoContext(managedObjectContext, order: 0, questionOrder: 0, quizId: "1", text: "YES!!!1", isCorrect: true)
+        
         return true
     }
 
@@ -88,6 +92,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let coordinator = self.persistentStoreCoordinator
         var managedObjectContext = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
         managedObjectContext.persistentStoreCoordinator = coordinator
+
         return managedObjectContext
     }()
 

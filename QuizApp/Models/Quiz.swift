@@ -43,8 +43,16 @@ public final class Quiz: ManagedObject {
 
         return quiz
     }
+    
+    static func getFetchRequest(moc:  NSManagedObjectContext) ->  NSFetchRequest {
+        let quizFetchRequest = NSFetchRequest(entityName: self.entityName)
+        let sortDescriptor = NSSortDescriptor(key: Keys.Result.rawValue, ascending: false)
+        quizFetchRequest.sortDescriptors = [sortDescriptor]
+        
+        return quizFetchRequest
+    }
 }
-	
+
 extension Quiz: KeyCodable {
     public enum Keys: String {
         case Id = "id"

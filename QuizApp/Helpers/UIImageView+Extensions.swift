@@ -16,7 +16,7 @@ extension UIImageView {
         }
     }
     
-    public func loadImageFromCache(urlString: String) {
+    private func loadImageFromCache(urlString: String) {
         
         if let imageName = getImageNameFromUrl(urlString) {
             guard loadImageFromLocalDir(imageName) != nil else {

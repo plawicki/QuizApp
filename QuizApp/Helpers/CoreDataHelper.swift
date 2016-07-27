@@ -79,6 +79,7 @@ extension ManagedObjectType where Self: ManagedObject {
             configure(newObject)
             return newObject
         }
+        
         return obj
     }
     
