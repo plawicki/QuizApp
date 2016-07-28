@@ -77,13 +77,15 @@ class QuestionViewController: UIViewController {
         answer1.setTitle(answers[0].text, forState: UIControlState.Normal)
         answer2.setTitle(answers[1].text, forState: UIControlState.Normal)
         
-        // Sometimes, questions have only two answers, so we hiding text in others
+        // Sometimes, questions have only two answers, so we hiding other buttons
         if answers.count > 2 {
             answer3.setTitle(answers[2].text, forState: UIControlState.Normal)
             answer4.setTitle(answers[3].text, forState: UIControlState.Normal)
+            answer3.hidden = false
+            answer4.hidden = false
         } else {
-            answer3.setTitle("", forState: UIControlState.Normal)
-            answer4.setTitle("", forState: UIControlState.Normal)
+            answer3.hidden = true
+            answer4.hidden = true
         }
         
         updateProgressBar()
