@@ -38,6 +38,8 @@ public final class Question: ManagedObject {
         
         let question: Question = findOrCreateInContext(moc, matchingPredicate: predicate) {
             $0.order = order
+            let quiz: Quiz =  Quiz.findOrCreateQuiz(quizId, inContext: moc)
+            $0.quiz = quiz
         }
         
         return question
@@ -48,7 +50,7 @@ public final class Question: ManagedObject {
         let text: String? = question["text"] as? String
         
         guard let order = orderFromJson else {
-            print("Question error, cannot find order number of question")
+            print("ASD")
             return
         }
         

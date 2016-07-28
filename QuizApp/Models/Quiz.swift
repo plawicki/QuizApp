@@ -53,12 +53,12 @@ public final class Quiz: ManagedObject {
             imgUrl = photoJson["url"] as? String
         }
         
-        guard let id: String = String(idFromJson) else {
+        guard let id: NSNumber = idFromJson else {
             print("Quiz error, cannot find id of quiz")
             return
         }
         
-        let quiz = findOrCreateQuiz(id, inContext: moc)
+        let quiz = findOrCreateQuiz(String(id.unsignedLongLongValue), inContext: moc)
         
         if let title = title {
             quiz.title = title

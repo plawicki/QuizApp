@@ -49,8 +49,8 @@ class QuestionViewController: UIViewController {
     @IBAction func clickAnswer(sender: UIButton) {
         let answerNumber = sender.tag
         
-        if let correct = answers[answerNumber].isCorrect {
-            if correct.boolValue { correctAnswers += 1 }
+        if answers[answerNumber].isCorrect.boolValue {
+            correctAnswers += 1
         }
         
         self.currentQuestionNumber += 1
@@ -66,6 +66,10 @@ class QuestionViewController: UIViewController {
         self.currentQuestion = questions[currentQuestionNumber]
 
         self.questionLabel.text = self.currentQuestion?.text
+        
+        answers = (currentQuestion!.answers?.allObjects) as! [Answer]
+        answers.sortInPlace({Int($0.order) < Int($1.order)})
+        
         self.answer1.setTitle(answers[0].text, forState: UIControlState.Normal)
         self.answer2.setTitle(answers[1].text, forState: UIControlState.Normal)
         self.answer3.setTitle(answers[2].text, forState: UIControlState.Normal)

@@ -119,7 +119,8 @@ class QuizesTableViewController: UITableViewController, NSFetchedResultsControll
         QuizDownloader.downloadQuizDataIfNotExistsLocaly(quiz.id){
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let questionVC = storyboard.instantiateViewControllerWithIdentifier("QuestionViewController") as! QuestionViewController
-            questionVC.quiz = quiz
+            let refreshedQuiz = self.fetchedResultsController.objectAtIndexPath(indexPath) as! Quiz
+            questionVC.quiz = refreshedQuiz
             
             self.presentViewController(questionVC, animated: true, completion: nil)
         }

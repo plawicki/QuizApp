@@ -62,6 +62,8 @@ public final class QuizDownloader {
                 }
                 callback()
             }
+        } else {
+            callback()
         }
     }
     
@@ -82,7 +84,7 @@ public final class QuizDownloader {
             
             context.saveOrRollback()
         } catch { 
-            print("QuizDownloader error, cannot parse json with quizes")
+            print("QuizDownloader error, cannot parse json with questions")
         }
     }
     

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15G31" minimumToolsVersion="Automatic">
     <entity name="Answer" representedClassName=".Answer" syncable="YES">
-        <attribute name="isCorrect" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isCorrect" attributeType="Boolean" syncable="YES"/>
         <attribute name="order" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="text" attributeType="String" syncable="YES"/>
         <relationship name="question" maxCount="1" deletionRule="Nullify" destinationEntity="Question" inverseName="answers" inverseEntity="Question" syncable="YES"/>
     </entity>
     <entity name="Question" representedClassName=".Question" syncable="YES">

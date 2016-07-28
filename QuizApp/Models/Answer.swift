@@ -11,22 +11,15 @@ import CoreData
 
 public final class Answer: ManagedObject {
 
-    public static func insertIntoContext(moc: NSManagedObjectContext, order: Int, questionOrder: Int, quizId: String, text: String?, isCorrect: Bool?) -> Answer {
+    public static func insertIntoContext(moc: NSManagedObjectContext, order: Int, questionOrder: Int, quizId: String, isCorrect: Bool, text: String) -> Answer {
         let answer: Answer = moc.insertObject()
-        
         answer.order = order
         
         let question: Question = Question.findOrCreateQuestion(quizId, order: questionOrder, inContext: moc)
         
         answer.question = question
-        
-        if let isCorrect = isCorrect {
-            answer.isCorrect = isCorrect
-        }
-        
-        if let text = text {
-            answer.text = text
-        }
+        answer.isCorrect = isCorrect
+        answer.text = text
         
         return answer
     }
@@ -39,6 +32,8 @@ public final class Answer: ManagedObject {
         
         let answer: Answer = findOrCreateInContext(moc, matchingPredicate: predicate) {
             $0.order = order
+            let question: Question = Question.findOrCreateQuestion(quizId, order: questionOrder, inContext: moc)
+            $0.question = question
         }
         
         return answer
@@ -47,6 +42,7 @@ public final class Answer: ManagedObject {
     static func insertIntoContextFromJson(moc: NSManagedObjectContext, quizId: String, questionOrder: Int, answer: [String: AnyObject]) {
         let orderFromJson: Int? = answer["order"] as? Int
         let text: String? = answer["text"] as? String
+        let isCorrect: Bool? = answer["isCorrect"] as? Bool
         
         guard let order = orderFromJson else {
             print("Answer error, cannot find order number of answer")
@@ -54,6 +50,12 @@ public final class Answer: ManagedObject {
         }
         
         let answer = findOrCreateAnswer(quizId, questionOrder: questionOrder, order: order, inContext: moc)
+        
+        if let isCorrect = isCorrect {
+            answer.isCorrect = isCorrect
+        } else {
+            answer.isCorrect = false
+        }
         
         if let text = text {
             answer.text = text
