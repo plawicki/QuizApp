@@ -14,12 +14,11 @@ import CoreData
 
 extension Quiz {
 
-    @NSManaged var id: String?
+    @NSManaged var id: NSNumber?
     @NSManaged var imageUrl: String?
     @NSManaged var numberOfQuestions: NSNumber
     @NSManaged var result: NSNumber?
     @NSManaged var title: String?
     @NSManaged var questions: NSSet?
-    @NSManaged var correctAnswers: NSNumber?
     @NSManaged var lastQuestionOrderNumber: NSNumber?
 }

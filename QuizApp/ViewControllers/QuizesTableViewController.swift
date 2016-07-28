@@ -35,6 +35,10 @@ class QuizesTableViewController: UITableViewController, NSFetchedResultsControll
         } catch {
             print("QuizesTableViewController error, cannot perform fetch")
         }
+        
+        QuizDownloader.startDownloadingQuizesIfNotExistsLocaly(){
+            print("end")
+        }
 
     }
 

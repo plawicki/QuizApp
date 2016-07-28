@@ -9,10 +9,10 @@
 import Foundation
 
 public final class QuizDownloader {
-    let quizesUrl = "http://quiz.o2.pl/api/v1/quizzes/0/100"
-    let context = CoreDataHelper.getManagedObjectContext()
+    static let quizesUrl = "http://quiz.o2.pl/api/v1/quizzes/0/100"
+    static let context = CoreDataHelper.getManagedObjectContext()
 
-    func startDownloadingQuizesIfNotExistsLocaly(callback: () -> ()) {
+    static func startDownloadingQuizesIfNotExistsLocaly(callback: () -> Void) {
         let isDataEmpty = Quiz.isEmpty(context)
         
         if isDataEmpty {
@@ -31,13 +31,13 @@ public final class QuizDownloader {
         }
     }
     
-    private func parseQuizesAndSave(json: NSData) {
+    private static func parseQuizesAndSave(json: NSData) {
         do {
             let json = try NSJSONSerialization.JSONObjectWithData(json, options: NSJSONReadingOptions.AllowFragments)
             
             if let quizes = json["items"] as? [[String: AnyObject]] {
                 for quiz in quizes {
-                    Quiz.insertIntoContextFromJson(context, quiz)
+                    Quiz.insertIntoContextFromJson(context, quiz: quiz)
                 }
             }
             
@@ -46,9 +46,9 @@ public final class QuizDownloader {
             print("QuizDownloader error, cannot parse json with quizes")
         }
     }
-    
+    /*
     func downloadQuizDataIfNotExistsLocaly(quizId: String, callback: () -> ()) {
-        let isDataEmpty = Question.isEmpty()
+        let isDataEmpty = Question.isEmpty(context)
         
         if isDataEmpty {
             let url = NSURL(string: getQuizUrl(quizId))
@@ -93,4 +93,5 @@ public final class QuizDownloader {
             }
         }
     }
+ */
 }

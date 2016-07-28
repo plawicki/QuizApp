@@ -11,7 +11,7 @@ import CoreData
 
 
 public final class Quiz: ManagedObject {
-    public static func insertIntoContext(moc: NSManagedObjectContext, id: String, title: String, numberOfQuestions: Int, result: Int?, imageUrl: String?, questions: Set<Question>?, correctAnswers: Int?, lastQuestionOrderNumber: Int?) -> Quiz {
+    public static func insertIntoContext(moc: NSManagedObjectContext, id: Int, title: String, numberOfQuestions: Int, result: Int?, imageUrl: String?, questions: Set<Question>?, correctAnswers: Int?, lastQuestionOrderNumber: Int?) -> Quiz {
         let quiz: Quiz = moc.insertObject()
         quiz.id = id
         quiz.title = title
@@ -28,11 +28,7 @@ public final class Quiz: ManagedObject {
         if let questions = questions {
             quiz.questions = questions
         }
-        
-        if let correctAnswers = correctAnswers {
-            quiz.correctAnswers = correctAnswers
-        }
-        
+
         if let lastQuestionOrderNumber = lastQuestionOrderNumber {
             quiz.lastQuestionOrderNumber = lastQuestionOrderNumber
         }
@@ -40,9 +36,9 @@ public final class Quiz: ManagedObject {
         return quiz
     }
     
-    static func findOrCreateQuiz(id: String, inContext moc: NSManagedObjectContext) -> Quiz {
+    static func findOrCreateQuiz(id: Int, inContext moc: NSManagedObjectContext) -> Quiz {
         
-        let predicate = NSPredicate(format: "%K LIKE %@", Keys.Id.rawValue, id)
+        let predicate = NSPredicate(format: "%K == %d", Keys.Id.rawValue, id)
         
         
         let quiz: Quiz = findOrCreateInContext(moc, matchingPredicate: predicate) {
@@ -51,7 +47,43 @@ public final class Quiz: ManagedObject {
 
         return quiz
     }
-
+    
+    static func insertIntoContextFromJson(moc: NSManagedObjectContext, quiz: [String: AnyObject]) {
+        let idFromJson: Int? = quiz["id"] as? Int
+        let title: String? = quiz["title"] as? String
+        let numberOfQuestions: Int? = quiz["questions"] as? Int
+        let photo: [String: AnyObject]? = quiz["mainPhoto"] as? [String: AnyObject]
+        var imgUrl: String?
+        
+        if let photoJson = photo {
+            imgUrl = photoJson["url"] as? String
+        }
+        
+        guard let id = idFromJson else {
+            print("Quiz error, cannot find id of quiz")
+            return
+        }
+        
+        let quiz = findOrCreateQuiz(id, inContext: moc)
+        
+        if let title = title {
+            quiz.title = title
+        }
+        
+        if let questions = numberOfQuestions {
+            quiz.numberOfQuestions = questions
+        }
+        
+        if let img = imgUrl {
+            quiz.imageUrl = img
+        }
+        
+        quiz.result = 0
+        quiz.lastQuestionOrderNumber = 0
+        
+        moc.saveOrRollback()
+    }
+    
     static func getFetchRequest(moc:  NSManagedObjectContext) ->  NSFetchRequest {
         let quizFetchRequest = NSFetchRequest(entityName: self.entityName)
         let sortDescriptor = NSSortDescriptor(key: Keys.Result.rawValue, ascending: false)

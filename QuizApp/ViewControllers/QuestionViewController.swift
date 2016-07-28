@@ -38,7 +38,6 @@ class QuestionViewController: UIViewController {
         currentQuestionNumber = (quiz!.lastQuestionOrderNumber?.integerValue)!
         questions = (quiz!.questions!.allObjects) as! [Question]
         currentQuestion = questions[currentQuestionNumber]
-        correctAnswers = quiz!.correctAnswers as! Int
         numberOfQuestions = (quiz?.numberOfQuestions.integerValue)!
         questions.sortInPlace({Int($0.order) < Int($1.order)})
         answers = (currentQuestion!.answers?.allObjects) as! [Answer]
