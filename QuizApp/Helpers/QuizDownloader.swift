@@ -18,7 +18,7 @@ public final class QuizDownloader {
         if isDataEmpty {
             let url = NSURL(string: quizesUrl)
             let request = NSURLRequest(URL: url!)
-            NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {
+            NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue()) {
                 (response: NSURLResponse?, data: NSData?, error: NSError?) -> Void in
                 if let data = data {
                     self.parseQuizesAndSave(data)
@@ -53,7 +53,7 @@ public final class QuizDownloader {
         if isDataEmpty {
             let url = NSURL(string: getQuizUrl(quizId))
             let request = NSURLRequest(URL: url!)
-            NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {
+            NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue()) {
                 (response: NSURLResponse?, data: NSData?, error: NSError?) -> Void in
                 if let data = data {
                     self.parseQuestionAndAnswersAndSave(data, quizId: quizId)

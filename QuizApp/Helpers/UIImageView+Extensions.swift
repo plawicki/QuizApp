@@ -47,7 +47,7 @@ extension UIImageView {
     private func loadImageFromUrlAndSave(urlString: String, imageName: String) {
         if let url = NSURL(string: urlString) {
             let request = NSURLRequest(URL: url)
-            NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {
+            NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue()) {
                 (response: NSURLResponse?, data: NSData?, error: NSError?) -> Void in
                 if let data = data {
                     let image = UIImage(data: data)
