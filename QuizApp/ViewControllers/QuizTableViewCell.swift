@@ -32,12 +32,18 @@ extension QuizTableViewCell: ConfigurableCell {
             quizImage.imageFromUrl(imgUrl)
         }
         
-
-        self.setResult(quiz.result, numberOfQuestions: quiz.numberOfQuestions)
+        self.setResult(quiz.result, numberOfQuestions: quiz.numberOfQuestions, lastQuestionNumber: quiz.lastQuestionOrderNumber)
     }
     
-    private func setResult(result: NSNumber, numberOfQuestions: NSNumber)  {
-        quizResult.text = "Last result: " + result.stringValue + "/" + numberOfQuestions.stringValue
+    private func setResult(result: NSNumber, numberOfQuestions: NSNumber, lastQuestionNumber: NSNumber?)  {
+        var labelText = "Last result: " + result.stringValue + "/" + numberOfQuestions.stringValue
+        
+        if let done: NSNumber = lastQuestionNumber where done.intValue < numberOfQuestions.intValue {
+            let donePercent: Int = (done.integerValue / numberOfQuestions.integerValue) * 100
+            labelText += " " + String(donePercent)
+        }
+        
+        quizResult.text = labelText
     }
 }
 
