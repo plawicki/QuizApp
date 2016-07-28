@@ -21,7 +21,7 @@ class QuizResultViewController: UIViewController {
     
     private func setPercentage() {
         if let nominator = result, denominator = numberOfQuestions {
-            let percent: Int = (nominator / denominator) * 100
+            let percent: Int = Int((Float(nominator) / Float(denominator)) * 100)
             percentLabel.text = String(percent) +  "%"
         }
     }

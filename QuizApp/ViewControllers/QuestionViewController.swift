@@ -81,6 +81,7 @@ class QuestionViewController: UIViewController {
         answer1.setTitle(answers[0].text, forState: UIControlState.Normal)
         answer2.setTitle(answers[1].text, forState: UIControlState.Normal)
         
+        // Sometimes, questions have only two answers, so we hiding text in others
         if answers.count > 2 {
             answer3.setTitle(answers[2].text, forState: UIControlState.Normal)
             answer4.setTitle(answers[3].text, forState: UIControlState.Normal)
@@ -88,8 +89,18 @@ class QuestionViewController: UIViewController {
             answer3.setTitle("", forState: UIControlState.Normal)
             answer4.setTitle("", forState: UIControlState.Normal)
         }
-            
+        
+        updateProgressBar()
+        
         saveQuizStatus()
+    }
+    
+    private func updateProgressBar() {
+        self.progressBar.progress = countProgress()
+    }
+    
+    private func countProgress() -> Float {
+        return Float(currentQuestionNumber) / Float(numberOfQuestions)
     }
     
     private func goToResults() {
