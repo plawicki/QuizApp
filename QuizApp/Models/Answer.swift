@@ -32,8 +32,7 @@ public final class Answer: ManagedObject {
         
         let answer: Answer = findOrCreateInContext(moc, matchingPredicate: predicate) {
             $0.order = order
-            let question: Question = Question.findOrCreateQuestion(quizId, order: questionOrder, inContext: moc)
-            $0.question = question
+
         }
         
         return answer
@@ -57,6 +56,9 @@ public final class Answer: ManagedObject {
         } else {
             answer.isCorrect = false
         }
+        
+        let question: Question = Question.findOrCreateQuestion(quizId, order: questionOrder, inContext: moc)
+        answer.question = question
         
         guard let textString = text else {
             if let number: NSNumber = textNumber {

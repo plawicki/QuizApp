@@ -36,11 +36,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QuizApp/Models/Answer.swift"
-            timestampString = "491421270.194382"
+            timestampString = "491422928.432948"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
             landmarkName = "insertIntoContextFromJson(_:quizId:questionOrder:answer:)"
             landmarkType = "5">
          </BreakpointContent>
