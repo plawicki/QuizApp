@@ -48,9 +48,10 @@ public final class QuizDownloader {
     }
     
     static func downloadQuizDataIfNotExistsLocaly(quizId: String, callback: () -> ()) {
-        let isDataEmpty = Question.isEmpty(context)
+       //TUTAJ  BLYND let isDataEmpty = Question.isEmpty(context)
+        let quiz: Quiz = Quiz.findOrCreateQuiz(quizId, inContext: context)
         
-        if isDataEmpty {
+        if quiz.questions?.count == 0 {
             let url = NSURL(string: getQuizUrl(quizId))
             let request = NSURLRequest(URL: url!)
             NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue()) {

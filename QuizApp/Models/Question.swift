@@ -49,15 +49,12 @@ public final class Question: ManagedObject {
         let orderFromJson: Int? = question["order"] as? Int
         let text: String? = question["text"] as? String
         
-        guard let order = orderFromJson else {
-            print("ASD")
-            return
-        }
-        
-        let question = findOrCreateQuestion(quizId, order: order, inContext: moc)
+        let question = findOrCreateQuestion(quizId, order: orderFromJson!, inContext: moc)
         
         if let text = text {
             question.text = text
+        } else {
+            question.text = "test"
         }
     }
 }

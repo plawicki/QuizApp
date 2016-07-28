@@ -19,6 +19,7 @@ class QuestionViewController: UIViewController {
     
     let context: NSManagedObjectContext = CoreDataHelper.getManagedObjectContext()
     
+    var quizId: String?
     var quiz: Quiz?
     
     var currentQuestionNumber = 0
@@ -35,6 +36,13 @@ class QuestionViewController: UIViewController {
     }
     
     private func setupVariables() {
+        guard let id = quizId else {
+            print("QuestionViewController error, quizId is not provided")
+            return
+        }
+        
+        quiz = Quiz.findOrCreateQuiz(id, inContext: context)
+        
         if let quiz = quiz {
             currentQuestionNumber = (quiz.lastQuestionOrderNumber?.integerValue)!
             questions = quiz.questions!.allObjects as! [Question]
@@ -72,9 +80,15 @@ class QuestionViewController: UIViewController {
         
         self.answer1.setTitle(answers[0].text, forState: UIControlState.Normal)
         self.answer2.setTitle(answers[1].text, forState: UIControlState.Normal)
-        self.answer3.setTitle(answers[2].text, forState: UIControlState.Normal)
-        self.answer4.setTitle(answers[3].text, forState: UIControlState.Normal)
         
+        if answers.count > 2 {
+            self.answer3.setTitle(answers[2].text, forState: UIControlState.Normal)
+            self.answer4.setTitle(answers[3].text, forState: UIControlState.Normal)
+        } else {
+            self.answer3.setTitle("", forState: UIControlState.Normal)
+            self.answer4.setTitle("", forState: UIControlState.Normal)
+        }
+            
         saveQuizStatus()
     }
     

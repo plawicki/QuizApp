@@ -34,7 +34,6 @@ public final class Quiz: ManagedObject {
         
         let predicate = NSPredicate(format: "%K LIKE %@", Keys.Id.rawValue, id)
         
-        
         let quiz: Quiz = findOrCreateInContext(moc, matchingPredicate: predicate) {
             $0.id = id
         }

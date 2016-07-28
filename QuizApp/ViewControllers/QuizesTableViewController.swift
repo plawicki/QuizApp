@@ -35,6 +35,11 @@ class QuizesTableViewController: UITableViewController, NSFetchedResultsControll
         } catch {
             print("QuizesTableViewController error, cannot perform fetch")
         }
+        
+        // Downloading quizes from internet and storing in coreData
+        QuizDownloader.startDownloadingQuizesIfNotExistsLocaly(){
+            print("Quizes downloaded")
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -119,8 +124,7 @@ class QuizesTableViewController: UITableViewController, NSFetchedResultsControll
         QuizDownloader.downloadQuizDataIfNotExistsLocaly(quiz.id){
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let questionVC = storyboard.instantiateViewControllerWithIdentifier("QuestionViewController") as! QuestionViewController
-            let refreshedQuiz = self.fetchedResultsController.objectAtIndexPath(indexPath) as! Quiz
-            questionVC.quiz = refreshedQuiz
+            questionVC.quizId = quiz.id
             
             self.presentViewController(questionVC, animated: true, completion: nil)
         }

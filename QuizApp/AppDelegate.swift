@@ -17,10 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
  
-        // Downloading quizes from internet and storing in coreData
-        QuizDownloader.startDownloadingQuizesIfNotExistsLocaly(){
-            print("Quizes downloaded")
-        }
+
         
         return true
     }
