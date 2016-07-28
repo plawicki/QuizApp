@@ -46,11 +46,10 @@ class QuestionViewController: UIViewController {
         if let quiz = quiz {
             currentQuestionNumber = (quiz.lastQuestionOrderNumber?.integerValue)!
             questions = quiz.questions!.allObjects as! [Question]
-            currentQuestion = questions[currentQuestionNumber]
             numberOfQuestions = quiz.numberOfQuestions.integerValue
             questions.sortInPlace({Int($0.order) < Int($1.order)})
-            answers = (currentQuestion!.answers?.allObjects) as! [Answer]
-            answers.sortInPlace({Int($0.order) < Int($1.order)})
+            
+            setupQuestionAndAnswers()
         }
     }
     
@@ -71,12 +70,9 @@ class QuestionViewController: UIViewController {
     }
     
     private func updateUIForQuestion() {
-        currentQuestion = questions[currentQuestionNumber]
+        setupQuestionAndAnswers()
 
         questionLabel.text = self.currentQuestion?.text
-        
-        answers = (currentQuestion!.answers?.allObjects) as! [Answer]
-        answers.sortInPlace({Int($0.order) < Int($1.order)})
         
         answer1.setTitle(answers[0].text, forState: UIControlState.Normal)
         answer2.setTitle(answers[1].text, forState: UIControlState.Normal)
@@ -93,6 +89,12 @@ class QuestionViewController: UIViewController {
         updateProgressBar()
         
         saveQuizStatus()
+    }
+    
+    private func setupQuestionAndAnswers() {
+        currentQuestion = questions[currentQuestionNumber]
+        answers = (currentQuestion!.answers?.allObjects) as! [Answer]
+        answers.sortInPlace({Int($0.order) < Int($1.order)})
     }
     
     private func updateProgressBar() {

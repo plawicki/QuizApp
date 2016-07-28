@@ -36,6 +36,7 @@ class QuizesTableViewController: UITableViewController, NSFetchedResultsControll
             print("QuizesTableViewController error, cannot perform fetch")
         }
         
+        
         // Downloading quizes from internet and storing in coreData
         QuizDownloader.startDownloadingQuizesIfNotExistsLocaly(){
             print("Quizes downloaded")

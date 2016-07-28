@@ -20,11 +20,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "QuizApp/Helpers/QuizDownloader.swift"
-            timestampString = "491412207.673357"
+            timestampString = "491423947.51171"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
             landmarkName = "downloadQuizDataIfNotExistsLocaly(_:callback:)"
             landmarkType = "5">
          </BreakpointContent>

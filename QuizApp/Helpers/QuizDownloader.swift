@@ -13,12 +13,13 @@ public final class QuizDownloader {
     static let context = CoreDataHelper.getManagedObjectContext()
 
     static func startDownloadingQuizesIfNotExistsLocaly(callback: () -> Void) {
+        
         let isDataEmpty = Quiz.isEmpty(context)
         
         if isDataEmpty {
             let url = NSURL(string: quizesUrl)
             let request = NSURLRequest(URL: url!)
-            NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue()) {
+            NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {
                 (response: NSURLResponse?, data: NSData?, error: NSError?) -> Void in
                 if let data = data {
                     self.parseQuizesAndSave(data)
