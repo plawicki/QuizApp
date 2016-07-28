@@ -42,6 +42,7 @@ public final class Answer: ManagedObject {
     static func insertIntoContextFromJson(moc: NSManagedObjectContext, quizId: String, questionOrder: Int, answer: [String: AnyObject]) {
         let orderFromJson: Int? = answer["order"] as? Int
         let text: String? = answer["text"] as? String
+        let textNumber: NSNumber? = answer["text"] as? NSNumber
         let isCorrect: Bool? = answer["isCorrect"] as? Bool
         
         guard let order = orderFromJson else {
@@ -57,9 +58,14 @@ public final class Answer: ManagedObject {
             answer.isCorrect = false
         }
         
-        if let text = text {
-            answer.text = text
+        guard let textString = text else {
+            if let number: NSNumber = textNumber {
+                answer.text = String(number.integerValue)
+            }
+            return
         }
+
+        answer.text = textString
     }
 }
 

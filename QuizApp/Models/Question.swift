@@ -53,8 +53,6 @@ public final class Question: ManagedObject {
         
         if let text = text {
             question.text = text
-        } else {
-            question.text = "test"
         }
     }
 }
