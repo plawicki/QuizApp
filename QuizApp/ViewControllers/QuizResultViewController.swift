@@ -9,5 +9,9 @@
 import UIKit
 
 class QuizResultViewController: UIViewController {
-    
+    @IBOutlet weak var percentLabel: UILabel!
+    @IBAction func goToQuizTable(sender: AnyObject) {
+    }
+    @IBAction func solveQuizAgain(sender: AnyObject) {
+    }
 }

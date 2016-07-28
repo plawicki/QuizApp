@@ -236,6 +236,9 @@
                                         </fragment>
                                     </attributedString>
                                 </state>
+                                <connections>
+                                    <action selector="solveQuizAgain:" destination="BKf-V9-If5" eventType="touchUpInside" id="Fx1-I2-tho"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jLt-jz-d46">
                                 <rect key="frame" x="16" y="356" width="130" height="70"/>
@@ -253,6 +256,9 @@
                                         </fragment>
                                     </attributedString>
                                 </state>
+                                <connections>
+                                    <action selector="goToQuizTable:" destination="BKf-V9-If5" eventType="touchUpInside" id="EsI-Le-19y"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -273,6 +279,9 @@
                             <constraint firstItem="SmY-os-VT5" firstAttribute="centerX" secondItem="Ioi-0I-Okn" secondAttribute="centerX" id="xsP-VC-lQT"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="percentLabel" destination="vg5-va-mPv" id="Yce-tK-MkZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ebY-NA-cGz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
