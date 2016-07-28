@@ -11,15 +11,13 @@ import CoreData
 
 
 public final class Quiz: ManagedObject {
-    public static func insertIntoContext(moc: NSManagedObjectContext, id: Int, title: String, numberOfQuestions: Int, result: Int?, imageUrl: String?, questions: Set<Question>?, correctAnswers: Int?, lastQuestionOrderNumber: Int?) -> Quiz {
+    public static func insertIntoContext(moc: NSManagedObjectContext, id: String, title: String, numberOfQuestions: Int, result: Int, lastQuestionOrderNumber: Int, imageUrl: String?, questions: Set<Question>?) -> Quiz {
         let quiz: Quiz = moc.insertObject()
         quiz.id = id
         quiz.title = title
         quiz.numberOfQuestions = numberOfQuestions
-        
-        if let result = result {
-            quiz.result = result
-        }
+        quiz.result = result
+        quiz.lastQuestionOrderNumber = lastQuestionOrderNumber
         
         if let image = imageUrl {
             quiz.imageUrl = image
@@ -28,17 +26,13 @@ public final class Quiz: ManagedObject {
         if let questions = questions {
             quiz.questions = questions
         }
-
-        if let lastQuestionOrderNumber = lastQuestionOrderNumber {
-            quiz.lastQuestionOrderNumber = lastQuestionOrderNumber
-        }
         
         return quiz
     }
     
-    static func findOrCreateQuiz(id: Int, inContext moc: NSManagedObjectContext) -> Quiz {
+    static func findOrCreateQuiz(id: String, inContext moc: NSManagedObjectContext) -> Quiz {
         
-        let predicate = NSPredicate(format: "%K == %d", Keys.Id.rawValue, id)
+        let predicate = NSPredicate(format: "%K LIKE %@", Keys.Id.rawValue, id)
         
         
         let quiz: Quiz = findOrCreateInContext(moc, matchingPredicate: predicate) {
@@ -49,7 +43,7 @@ public final class Quiz: ManagedObject {
     }
     
     static func insertIntoContextFromJson(moc: NSManagedObjectContext, quiz: [String: AnyObject]) {
-        let idFromJson: Int? = quiz["id"] as? Int
+        let idFromJson: NSNumber? = quiz["id"] as? NSNumber
         let title: String? = quiz["title"] as? String
         let numberOfQuestions: Int? = quiz["questions"] as? Int
         let photo: [String: AnyObject]? = quiz["mainPhoto"] as? [String: AnyObject]
@@ -59,7 +53,7 @@ public final class Quiz: ManagedObject {
             imgUrl = photoJson["url"] as? String
         }
         
-        guard let id = idFromJson else {
+        guard let id: String = String(idFromJson) else {
             print("Quiz error, cannot find id of quiz")
             return
         }

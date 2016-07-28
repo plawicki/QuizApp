@@ -47,7 +47,7 @@ public final class QuizDownloader {
         }
     }
     
-    static func downloadQuizDataIfNotExistsLocaly(quizId: Int, callback: () -> ()) {
+    static func downloadQuizDataIfNotExistsLocaly(quizId: String, callback: () -> ()) {
         let isDataEmpty = Question.isEmpty(context)
         
         if isDataEmpty {
@@ -65,11 +65,11 @@ public final class QuizDownloader {
         }
     }
     
-    private static func getQuizUrl(quizId: Int) -> String{
+    private static func getQuizUrl(quizId: String) -> String{
         return "http://quiz.o2.pl/api/v1/quiz/" + String(quizId) + "/0"
     }
     
-    private static func parseQuestionAndAnswersAndSave(json: NSData, quizId: Int) {
+    private static func parseQuestionAndAnswersAndSave(json: NSData, quizId: String) {
         do {
             let json = try NSJSONSerialization.JSONObjectWithData(json, options: NSJSONReadingOptions.AllowFragments)
             
@@ -86,7 +86,7 @@ public final class QuizDownloader {
         }
     }
     
-    private static func parseAnswers(question: [String: AnyObject], quizId: Int) {
+    private static func parseAnswers(question: [String: AnyObject], quizId: String) {
         if let questionOrder = question["order"] as? Int {
             if let answers = question["answers"] as? [[String:  AnyObject]] {
                 for answer in answers {

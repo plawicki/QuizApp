@@ -13,11 +13,11 @@
         <relationship name="quiz" maxCount="1" deletionRule="Nullify" destinationEntity="Quiz" inverseName="questions" inverseEntity="Quiz" syncable="YES"/>
     </entity>
     <entity name="Quiz" representedClassName=".Quiz" syncable="YES">
-        <attribute name="id" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="id" attributeType="String" syncable="YES"/>
         <attribute name="imageUrl" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="lastQuestionOrderNumber" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="lastQuestionOrderNumber" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="numberOfQuestions" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="result" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="result" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="title" attributeType="String" syncable="YES"/>
         <relationship name="questions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Question" inverseName="quiz" inverseEntity="Question" syncable="YES"/>
     </entity>

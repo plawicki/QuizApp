@@ -11,7 +11,7 @@ import CoreData
 
 public final class Answer: ManagedObject {
 
-    public static func insertIntoContext(moc: NSManagedObjectContext, order: Int, questionOrder: Int, quizId: Int, text: String?, isCorrect: Bool?) -> Answer {
+    public static func insertIntoContext(moc: NSManagedObjectContext, order: Int, questionOrder: Int, quizId: String, text: String?, isCorrect: Bool?) -> Answer {
         let answer: Answer = moc.insertObject()
         
         answer.order = order
@@ -31,7 +31,7 @@ public final class Answer: ManagedObject {
         return answer
     }
     
-    static func findOrCreateAnswer(quizId: Int, questionOrder: Int, order: Int, inContext moc: NSManagedObjectContext) -> Answer {
+    static func findOrCreateAnswer(quizId: String, questionOrder: Int, order: Int, inContext moc: NSManagedObjectContext) -> Answer {
         let question: Question = Question.findOrCreateQuestion(quizId, order: questionOrder, inContext: moc)
         
         let predicate = NSPredicate(format: "%K == %@ AND %K == %d", Keys.Question.rawValue, question, Keys.Order.rawValue, order)
@@ -44,7 +44,7 @@ public final class Answer: ManagedObject {
         return answer
     }
     
-    static func insertIntoContextFromJson(moc: NSManagedObjectContext, quizId: Int, questionOrder: Int, answer: [String: AnyObject]) {
+    static func insertIntoContextFromJson(moc: NSManagedObjectContext, quizId: String, questionOrder: Int, answer: [String: AnyObject]) {
         let orderFromJson: Int? = answer["order"] as? Int
         let text: String? = answer["text"] as? String
         

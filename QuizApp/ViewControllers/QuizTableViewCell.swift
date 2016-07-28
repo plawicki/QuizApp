@@ -32,9 +32,8 @@ extension QuizTableViewCell: ConfigurableCell {
             quizImage.imageFromUrl(imgUrl)
         }
         
-        if let result = quiz.result {
-            self.setResult(result, numberOfQuestions: quiz.numberOfQuestions)
-        }
+
+        self.setResult(quiz.result, numberOfQuestions: quiz.numberOfQuestions)
     }
     
     private func setResult(result: NSNumber, numberOfQuestions: NSNumber)  {

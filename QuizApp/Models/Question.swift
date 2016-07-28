@@ -11,7 +11,7 @@ import CoreData
 
 public final class Question: ManagedObject {
 
-    public static func insertIntoContext(moc: NSManagedObjectContext, order: Int, text: String?, quizId: Int?, answers: Set<Answer>?) -> Question {
+    public static func insertIntoContext(moc: NSManagedObjectContext, order: Int, text: String?, quizId: String?, answers: Set<Answer>?) -> Question {
         let question: Question = moc.insertObject()
         question.order = order
         
@@ -30,7 +30,7 @@ public final class Question: ManagedObject {
         return question
     }
     
-    static func findOrCreateQuestion(quizId: Int, order: Int, inContext moc: NSManagedObjectContext) -> Question {
+    static func findOrCreateQuestion(quizId: String, order: Int, inContext moc: NSManagedObjectContext) -> Question {
         let quiz: Quiz = Quiz.findOrCreateQuiz(quizId, inContext: moc)
         
         let predicate = NSPredicate(format: "%K == %@ AND %K == %d", Keys.Quiz.rawValue, quiz, Keys.Order.rawValue, order)
@@ -43,7 +43,7 @@ public final class Question: ManagedObject {
         return question
     }
 
-    static func insertIntoContextFromJson(moc: NSManagedObjectContext, quizId: Int, question: [String: AnyObject]) {
+    static func insertIntoContextFromJson(moc: NSManagedObjectContext, quizId: String, question: [String: AnyObject]) {
         let orderFromJson: Int? = question["order"] as? Int
         let text: String? = question["text"] as? String
         

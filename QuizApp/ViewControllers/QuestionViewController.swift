@@ -35,13 +35,15 @@ class QuestionViewController: UIViewController {
     }
     
     private func setupVariables() {
-        currentQuestionNumber = (quiz!.lastQuestionOrderNumber?.integerValue)!
-        questions = (quiz!.questions!.allObjects) as! [Question]
-        currentQuestion = questions[currentQuestionNumber]
-        numberOfQuestions = (quiz?.numberOfQuestions.integerValue)!
-        questions.sortInPlace({Int($0.order) < Int($1.order)})
-        answers = (currentQuestion!.answers?.allObjects) as! [Answer]
-        answers.sortInPlace({Int($0.order) < Int($1.order)})
+        if let quiz = quiz {
+            currentQuestionNumber = (quiz.lastQuestionOrderNumber?.integerValue)!
+            questions = quiz.questions!.allObjects as! [Question]
+            currentQuestion = questions[currentQuestionNumber]
+            numberOfQuestions = quiz.numberOfQuestions.integerValue
+            questions.sortInPlace({Int($0.order) < Int($1.order)})
+            answers = (currentQuestion!.answers?.allObjects) as! [Answer]
+            answers.sortInPlace({Int($0.order) < Int($1.order)})
+        }
     }
     
     @IBAction func clickAnswer(sender: UIButton) {
@@ -76,7 +78,7 @@ class QuestionViewController: UIViewController {
         quiz?.result = correctAnswers
         quiz?.lastQuestionOrderNumber = currentQuestion?.order
         
-        if (currentQuestion?.order.intValue)! == ((quiz?.numberOfQuestions.intValue)! - 1) {
+        if (currentQuestion?.order.intValue)! == (quiz?.numberOfQuestions.intValue)! {
             quiz?.lastQuestionOrderNumber = 0
         }
         
