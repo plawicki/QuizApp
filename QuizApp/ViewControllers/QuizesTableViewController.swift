@@ -128,8 +128,6 @@ class QuizesTableViewController: UITableViewController, NSFetchedResultsControll
             
             self.presentViewController(questionVC, animated: true, completion: nil)
         }
-        
-        
     }
     
      // MARK: - Navigation
