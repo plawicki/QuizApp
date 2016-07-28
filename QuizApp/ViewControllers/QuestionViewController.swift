@@ -30,40 +30,39 @@ class QuestionViewController: UIViewController {
     var currentQuestion: Question?
     
     override func viewDidLoad() {
-        self.currentQuestionNumber = (quiz!.lastQuestionOrderNumber?.integerValue)!
-        self.questions = (quiz!.questions!.allObjects) as! [Question]
-        self.currentQuestion = questions[self.currentQuestionNumber]
-        self.correctAnswers = quiz!.correctAnswers as! Int
-        
-        self.numberOfQuestions = (quiz?.numberOfQuestions.integerValue)!
-
+        setupVariables()
+        updateUIForQuestion()
+    }
+    
+    private func setupVariables() {
+        currentQuestionNumber = (quiz!.lastQuestionOrderNumber?.integerValue)!
+        questions = (quiz!.questions!.allObjects) as! [Question]
+        currentQuestion = questions[currentQuestionNumber]
+        correctAnswers = quiz!.correctAnswers as! Int
+        numberOfQuestions = (quiz?.numberOfQuestions.integerValue)!
         questions.sortInPlace({Int($0.order) < Int($1.order)})
-        
-        self.answers = (currentQuestion!.answers?.allObjects) as! [Answer]
-        
+        answers = (currentQuestion!.answers?.allObjects) as! [Answer]
         answers.sortInPlace({Int($0.order) < Int($1.order)})
-        
-        updateQuestion()
     }
     
     @IBAction func clickAnswer(sender: UIButton) {
         let answerNumber = sender.tag
         
         if let correct = answers[answerNumber].isCorrect {
-            if correct.boolValue { self.correctAnswers += 1 }
+            if correct.boolValue { correctAnswers += 1 }
         }
         
         self.currentQuestionNumber += 1
         
-        if self.currentQuestionNumber < self.numberOfQuestions {
-            updateQuestion()
+        if self.currentQuestionNumber < numberOfQuestions {
+            updateUIForQuestion()
         } else {
             print("koniec")
         }
     }
     
-    private func updateQuestion() {
-        self.currentQuestion = questions[self.currentQuestionNumber]
+    private func updateUIForQuestion() {
+        self.currentQuestion = questions[currentQuestionNumber]
 
         self.questionLabel.text = self.currentQuestion?.text
         self.answer1.setTitle(answers[0].text, forState: UIControlState.Normal)

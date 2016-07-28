@@ -42,4 +42,22 @@ extension ManagedObjectType where Self: ManagedObject {
         
         return result
     }
+    
+    public static func fetchAllInContext(moc: NSManagedObjectContext) -> [Self]? {
+        let request = NSFetchRequest(entityName: Self.entityName)
+        
+        guard let results = try! moc.executeFetchRequest(request) as? [Self] else { fatalError("NSManagedObject error, cannot fetch objects") }
+        
+        return results
+    }
+    
+    static func isEmpty(moc: NSManagedObjectContext) -> Bool {
+        let objects = fetchAllInContext(moc)
+        
+        if let isEmpty = objects?.isEmpty {
+            return isEmpty
+        }
+        
+        return true
+    }
 }
