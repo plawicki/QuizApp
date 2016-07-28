@@ -38,9 +38,9 @@ extension QuizTableViewCell: ConfigurableCell {
     private func setResult(result: NSNumber, numberOfQuestions: NSNumber, lastQuestionNumber: NSNumber?)  {
         var labelText = "Last result: " + result.stringValue + "/" + numberOfQuestions.stringValue
         
-        if let done: NSNumber = lastQuestionNumber where 0 ..< numberOfQuestions.integerValue ~= done.integerValue {
+        if let done: NSNumber = lastQuestionNumber where 1 ..< numberOfQuestions.integerValue ~= done.integerValue {
             let donePercent: Int = (done.integerValue / numberOfQuestions.integerValue) * 100
-            labelText += " " + String(donePercent)
+            labelText += " " + String(donePercent) +  "%"
         }
         
         quizResult.text = labelText

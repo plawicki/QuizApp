@@ -66,7 +66,7 @@ class QuestionViewController: UIViewController {
         if self.currentQuestionNumber < numberOfQuestions {
             updateUIForQuestion()
         } else {
-            print("koniec")
+            goToResults()
         }
     }
     
@@ -90,6 +90,16 @@ class QuestionViewController: UIViewController {
         }
             
         saveQuizStatus()
+    }
+    
+    private func goToResults() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let resultVC = storyboard.instantiateViewControllerWithIdentifier("QuizResultViewController") as! QuizResultViewController
+        resultVC.quizId = quizId
+        resultVC.result = quiz!.result.integerValue
+        resultVC.numberOfQuestions = numberOfQuestions
+        
+        self.presentViewController(resultVC, animated: true, completion: nil)
     }
     
     private func saveQuizStatus() {
