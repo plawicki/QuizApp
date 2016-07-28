@@ -184,5 +184,99 @@
             </objects>
             <point key="canvasLocation" x="-145" y="918"/>
         </scene>
+        <!--Quiz Result View Controller-->
+        <scene sceneID="tyw-VO-g6b">
+            <objects>
+                <viewController id="BKf-V9-If5" customClass="QuizResultViewController" customModule="QuizApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="TVV-Nf-fGo"/>
+                        <viewControllerLayoutGuide type="bottom" id="5h3-ug-1vv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ioi-0I-Okn">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brawo!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="teh-sh-2bF">
+                                <rect key="frame" x="16" y="20" width="288" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Odpowiedziałeś na:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ng4-br-h6d">
+                                <rect key="frame" x="16" y="69" width="288" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vg5-va-mPv">
+                                <rect key="frame" x="147" y="263" width="26" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pytań" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SmY-os-VT5">
+                                <rect key="frame" x="138" y="312" width="44" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QxK-n6-Fnq">
+                                <rect key="frame" x="174" y="356" width="130" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="afM-yN-nsb"/>
+                                    <constraint firstAttribute="width" constant="130" id="mBk-vR-ilA"/>
+                                </constraints>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Rozwiąż jeszcze raz">
+                                            <attributes>
+                                                <font key="NSFont" size="15" name="HelveticaNeue"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jLt-jz-d46">
+                                <rect key="frame" x="16" y="356" width="130" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="Biw-Oj-gPn"/>
+                                    <constraint firstAttribute="width" constant="130" id="ZxE-Xa-la3"/>
+                                </constraints>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Przejdź do listy quizów">
+                                            <attributes>
+                                                <font key="NSFont" size="15" name="HelveticaNeue"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ng4-br-h6d" firstAttribute="leading" secondItem="Ioi-0I-Okn" secondAttribute="leadingMargin" id="8zu-sq-N6T"/>
+                            <constraint firstItem="vg5-va-mPv" firstAttribute="centerY" secondItem="Ioi-0I-Okn" secondAttribute="centerY" id="Byf-4N-Rwq"/>
+                            <constraint firstItem="jLt-jz-d46" firstAttribute="leading" secondItem="Ioi-0I-Okn" secondAttribute="leadingMargin" id="DkW-dx-nSQ"/>
+                            <constraint firstItem="vg5-va-mPv" firstAttribute="centerX" secondItem="Ioi-0I-Okn" secondAttribute="centerX" id="GUd-u0-Nfl"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="teh-sh-2bF" secondAttribute="trailing" id="I35-Uc-cqt"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ng4-br-h6d" secondAttribute="trailing" id="JZc-f1-dvR"/>
+                            <constraint firstItem="jLt-jz-d46" firstAttribute="baseline" secondItem="QxK-n6-Fnq" secondAttribute="baseline" id="S94-UW-pnp"/>
+                            <constraint firstItem="teh-sh-2bF" firstAttribute="leading" secondItem="Ioi-0I-Okn" secondAttribute="leadingMargin" id="T7i-Er-m8x"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="QxK-n6-Fnq" secondAttribute="trailing" id="XSX-4C-YPG"/>
+                            <constraint firstItem="SmY-os-VT5" firstAttribute="top" secondItem="vg5-va-mPv" secondAttribute="bottom" constant="8" id="gqh-Sm-xCk"/>
+                            <constraint firstItem="ng4-br-h6d" firstAttribute="top" secondItem="teh-sh-2bF" secondAttribute="bottom" constant="8" id="iAx-Ic-CIK"/>
+                            <constraint firstItem="teh-sh-2bF" firstAttribute="top" secondItem="TVV-Nf-fGo" secondAttribute="bottom" id="sdz-Bb-CG1"/>
+                            <constraint firstItem="jLt-jz-d46" firstAttribute="top" secondItem="SmY-os-VT5" secondAttribute="bottom" constant="23" id="wJw-iW-ebo"/>
+                            <constraint firstItem="SmY-os-VT5" firstAttribute="centerX" secondItem="Ioi-0I-Okn" secondAttribute="centerX" id="xsP-VC-lQT"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ebY-NA-cGz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="254" y="854"/>
+        </scene>
     </scenes>
 </document>
