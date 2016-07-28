@@ -108,10 +108,11 @@ class QuestionViewController: UIViewController {
     }
     
     private func goToResults() {
+        saveQuizStatus()
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let resultVC = storyboard.instantiateViewControllerWithIdentifier("QuizResultViewController") as! QuizResultViewController
         resultVC.quizId = quizId
-        resultVC.result = quiz!.result.integerValue
+        resultVC.result = correctAnswers
         resultVC.numberOfQuestions = numberOfQuestions
         
         self.presentViewController(resultVC, animated: true, completion: nil)
