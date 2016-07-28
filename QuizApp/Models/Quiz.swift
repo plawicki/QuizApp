@@ -80,8 +80,6 @@ public final class Quiz: ManagedObject {
         
         quiz.result = 0
         quiz.lastQuestionOrderNumber = 0
-        
-        moc.saveOrRollback()
     }
     
     static func getFetchRequest(moc:  NSManagedObjectContext) ->  NSFetchRequest {

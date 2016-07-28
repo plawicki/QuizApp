@@ -43,6 +43,21 @@ public final class Question: ManagedObject {
         return question
     }
 
+    static func insertIntoContextFromJson(moc: NSManagedObjectContext, quizId: Int, question: [String: AnyObject]) {
+        let orderFromJson: Int? = question["order"] as? Int
+        let text: String? = question["text"] as? String
+        
+        guard let order = orderFromJson else {
+            print("Question error, cannot find order number of question")
+            return
+        }
+        
+        let question = findOrCreateQuestion(quizId, order: order, inContext: moc)
+        
+        if let text = text {
+            question.text = text
+        }
+    }
 }
 
 extension Question: KeyCodable {

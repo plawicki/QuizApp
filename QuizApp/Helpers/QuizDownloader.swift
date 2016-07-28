@@ -46,8 +46,8 @@ public final class QuizDownloader {
             print("QuizDownloader error, cannot parse json with quizes")
         }
     }
-    /*
-    func downloadQuizDataIfNotExistsLocaly(quizId: String, callback: () -> ()) {
+    
+    static func downloadQuizDataIfNotExistsLocaly(quizId: Int, callback: () -> ()) {
         let isDataEmpty = Question.isEmpty(context)
         
         if isDataEmpty {
@@ -56,7 +56,7 @@ public final class QuizDownloader {
             NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {
                 (response: NSURLResponse?, data: NSData?, error: NSError?) -> Void in
                 if let data = data {
-                    self.parseQuestionAndAnswersAndSave(data)
+                    self.parseQuestionAndAnswersAndSave(data, quizId: quizId)
                 } else {
                     print("QuizDownloader error, cannot get data from quiz url")
                 }
@@ -65,18 +65,18 @@ public final class QuizDownloader {
         }
     }
     
-    private func getQuizUrl(quizId: String) -> String{
-        return "http://quiz.o2.pl/api/v1/quiz/" + quizId + "/0"
+    private static func getQuizUrl(quizId: Int) -> String{
+        return "http://quiz.o2.pl/api/v1/quiz/" + String(quizId) + "/0"
     }
     
-    private func parseQuestionAndAnswersAndSave(json: NSData) {
+    private static func parseQuestionAndAnswersAndSave(json: NSData, quizId: Int) {
         do {
             let json = try NSJSONSerialization.JSONObjectWithData(json, options: NSJSONReadingOptions.AllowFragments)
             
             if let questions = json["questions"] as? [[String: AnyObject]] {
                 for question in questions {
-                    Question.insertIntoContextFromJson(context, question)
-                    parseAnswers(question)
+                    Question.insertIntoContextFromJson(context, quizId: quizId, question: question)
+                    parseAnswers(question, quizId: quizId)
                 }
             }
             
@@ -86,12 +86,13 @@ public final class QuizDownloader {
         }
     }
     
-    private func parseAnswers(answers: [String: AnyObject]) {
-        if let answers = answers["answers"] as? [[String:  AnyObject]] {
-            for answer in answers {
-                Answer.insertIntoContextFromJson(context, answer)
+    private static func parseAnswers(question: [String: AnyObject], quizId: Int) {
+        if let questionOrder = question["order"] as? Int {
+            if let answers = question["answers"] as? [[String:  AnyObject]] {
+                for answer in answers {
+                    Answer.insertIntoContextFromJson(context, quizId: quizId, questionOrder: questionOrder, answer: answer)
+                }
             }
         }
     }
- */
 }
