@@ -55,7 +55,7 @@ public final class QuizDownloader {
         if quiz.questions?.count == 0 {
             let url = NSURL(string: getQuizUrl(quizId))
             let request = NSURLRequest(URL: url!)
-            NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue()) {
+            NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {
                 (response: NSURLResponse?, data: NSData?, error: NSError?) -> Void in
                 if let data = data {
                     self.parseQuestionAndAnswersAndSave(data, quizId: quizId)
