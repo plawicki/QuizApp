@@ -27,17 +27,17 @@ class QuizResultViewController: UIViewController {
     }
 
     @IBAction func goToQuizTable(sender: AnyObject) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let quizesVC = storyboard.instantiateViewControllerWithIdentifier("QuizesTableViewController") as! QuizesTableViewController
-        
-        self.presentViewController(quizesVC, animated: true, completion: nil)
+        performSegueWithIdentifier("ResultToRootSegue", sender: self)
     }
     
     @IBAction func solveQuizAgain(sender: AnyObject) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let questionVC = storyboard.instantiateViewControllerWithIdentifier("QuestionViewController") as! QuestionViewController
-        questionVC.quizId = quizId
-        
-        self.presentViewController(questionVC, animated: true, completion: nil)
+        performSegueWithIdentifier("ResultToQuestionSegue", sender: self)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "ResultToQuestionSegue" {
+            let destinationVC: QuestionViewController = segue.destinationViewController as! QuestionViewController
+            destinationVC.quizId = quizId
+        }
     }
 }

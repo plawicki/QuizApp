@@ -127,7 +127,7 @@ class QuizesTableViewController: UITableViewController, NSFetchedResultsControll
      // MARK: - Navigation
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "QuestionViewController" {
+        if segue.identifier == "RootToQuestionSegue" {
             if let quiz: Quiz = getClickedQuiz() {
                 let destinationVC: QuestionViewController = segue.destinationViewController as! QuestionViewController
                 destinationVC.quizId = quiz.id

@@ -16,7 +16,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="quizCell" rowHeight="150" id="sdA-bj-NG9" customClass="QuizTableViewCell" customModule="QuizApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="320" height="150"/>
+                                <rect key="frame" x="0.0" y="28" width="320" height="150"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sdA-bj-NG9" id="LSP-ih-ujd">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="149.5"/>
@@ -60,7 +60,7 @@
                                     <outlet property="quizImage" destination="exV-3S-cbv" id="Ehg-hc-mzd"/>
                                     <outlet property="quizResult" destination="e3a-Ga-j8I" id="sF5-VK-IO8"/>
                                     <outlet property="quizTitle" destination="sV6-Ok-66T" id="nNz-VG-Mg9"/>
-                                    <segue destination="DM7-mv-2WL" kind="custom" identifier="QuestionViewController" customClass="TableToQuestionSegue" customModule="QuizApp" customModuleProvider="target" id="oAi-2L-OSo"/>
+                                    <segue destination="DM7-mv-2WL" kind="custom" identifier="RootToQuestionSegue" customClass="TableToQuestionSegue" customModule="QuizApp" customModuleProvider="target" id="oAi-2L-OSo"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -179,7 +179,7 @@
                         <outlet property="answer4" destination="eAA-jo-AzO" id="obV-cr-a3L"/>
                         <outlet property="progressBar" destination="e69-IG-h5R" id="fSy-vz-yXm"/>
                         <outlet property="questionLabel" destination="2BN-1n-JMb" id="cdc-la-cLg"/>
-                        <segue destination="BKf-V9-If5" kind="modal" identifier="QuizResultViewController" id="KKg-IU-aCr"/>
+                        <segue destination="BKf-V9-If5" kind="modal" identifier="QuestionToResultSegue" id="KKg-IU-aCr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gSR-1i-Ovf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -283,6 +283,8 @@
                     </view>
                     <connections>
                         <outlet property="percentLabel" destination="vg5-va-mPv" id="Yce-tK-MkZ"/>
+                        <segue destination="bfY-n9-IjZ" kind="modal" identifier="ResultToRootSegue" id="g2F-xF-anD"/>
+                        <segue destination="DM7-mv-2WL" kind="modal" identifier="ResultToQuestionSegue" id="J02-tY-e3c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ebY-NA-cGz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -290,4 +292,8 @@
             <point key="canvasLocation" x="254" y="854"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="J02-tY-e3c"/>
+        <segue reference="g2F-xF-anD"/>
+    </inferredMetricsTieBreakers>
 </document>

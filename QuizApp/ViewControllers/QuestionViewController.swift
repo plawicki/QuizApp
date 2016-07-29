@@ -109,7 +109,7 @@ class QuestionViewController: UIViewController {
     
     private func goToResults() {
         saveQuizStatus()
-        performSegueWithIdentifier("QuizResultViewController", sender: self)
+        performSegueWithIdentifier("QuestionToResultSegue", sender: self)
     }
     
     private func saveQuizStatus() {
