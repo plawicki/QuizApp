@@ -179,6 +179,7 @@
                         <outlet property="answer4" destination="eAA-jo-AzO" id="obV-cr-a3L"/>
                         <outlet property="progressBar" destination="e69-IG-h5R" id="fSy-vz-yXm"/>
                         <outlet property="questionLabel" destination="2BN-1n-JMb" id="cdc-la-cLg"/>
+                        <segue destination="BKf-V9-If5" kind="modal" identifier="QuizResultViewController" id="KKg-IU-aCr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gSR-1i-Ovf" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -109,13 +109,7 @@ class QuestionViewController: UIViewController {
     
     private func goToResults() {
         saveQuizStatus()
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let resultVC = storyboard.instantiateViewControllerWithIdentifier("QuizResultViewController") as! QuizResultViewController
-        resultVC.quizId = quizId
-        resultVC.result = correctAnswers
-        resultVC.numberOfQuestions = numberOfQuestions
-        
-        self.presentViewController(resultVC, animated: true, completion: nil)
+        performSegueWithIdentifier("QuizResultViewController", sender: self)
     }
     
     private func saveQuizStatus() {
@@ -129,5 +123,12 @@ class QuestionViewController: UIViewController {
             
             context.saveOrRollback()
         }
+    }
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let destinationVC: QuizResultViewController = segue.destinationViewController as! QuizResultViewController
+        destinationVC.quizId = quizId
+        destinationVC.result = quiz?.result.integerValue
+        destinationVC.numberOfQuestions = numberOfQuestions
     }
 }
