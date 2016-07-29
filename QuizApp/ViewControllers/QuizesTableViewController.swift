@@ -141,10 +141,9 @@ class QuizesTableViewController: UITableViewController, NSFetchedResultsControll
     
      // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "QuestionViewController" {
-            if let indexPath = tableView.indexPathForSelectedRow, let quiz: Quiz = getClickedQuiz() {
+            if let quiz: Quiz = getClickedQuiz() {
                 let destinationVC: QuestionViewController = segue.destinationViewController as! QuestionViewController
                 destinationVC.quizId = quiz.id
             }

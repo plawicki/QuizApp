@@ -60,7 +60,7 @@
                                     <outlet property="quizImage" destination="exV-3S-cbv" id="Ehg-hc-mzd"/>
                                     <outlet property="quizResult" destination="e3a-Ga-j8I" id="sF5-VK-IO8"/>
                                     <outlet property="quizTitle" destination="sV6-Ok-66T" id="nNz-VG-Mg9"/>
-                                    <segue destination="DM7-mv-2WL" kind="custom" identifier="QuestionViewController" id="cao-nt-7Qv"/>
+                                    <segue destination="DM7-mv-2WL" kind="modal" id="1Vw-IC-5CX"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
