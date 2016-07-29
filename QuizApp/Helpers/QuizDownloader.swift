@@ -49,7 +49,6 @@ public final class QuizDownloader {
     }
     
     static func downloadQuizDataIfNotExistsLocaly(quizId: String, callback: () -> ()) {
-       //TUTAJ  BLYND let isDataEmpty = Question.isEmpty(context)
         let quiz: Quiz = Quiz.findOrCreateQuiz(quizId, inContext: context)
         
         if quiz.questions?.count == 0 {
