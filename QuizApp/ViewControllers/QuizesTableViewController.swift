@@ -121,22 +121,7 @@ class QuizesTableViewController: UITableViewController, NSFetchedResultsControll
     
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        /*
-        let quiz: Quiz = self.fetchedResultsController.objectAtIndexPath(indexPath) as! Quiz
-        
-        QuizDownloader.downloadQuizDataIfNotExistsLocaly(quiz.id){
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let questionVC = storyboard.instantiateViewControllerWithIdentifier("QuestionViewController") as! QuestionViewController
-            questionVC.quizId = quiz.id
-            
-            self.presentViewController(questionVC, animated: true, completion: nil)
-        }
- */
-        let quiz: Quiz = getClickedQuiz()
-        QuizDownloader.downloadQuizDataIfNotExistsLocaly(quiz.id)  {
-            self.performSegueWithIdentifier("QuestionViewController", sender: self)
-            tableView.deselectRowAtIndexPath(indexPath, animated: true)
-        }
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
      // MARK: - Navigation
@@ -150,7 +135,7 @@ class QuizesTableViewController: UITableViewController, NSFetchedResultsControll
         }
     }
     
-    private func getClickedQuiz() ->  Quiz {
+    func getClickedQuiz() ->  Quiz {
         let quiz: Quiz = self.fetchedResultsController.objectAtIndexPath(tableView.indexPathForSelectedRow!) as! Quiz
         
         return quiz
