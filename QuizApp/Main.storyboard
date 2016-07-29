@@ -60,6 +60,7 @@
                                     <outlet property="quizImage" destination="exV-3S-cbv" id="Ehg-hc-mzd"/>
                                     <outlet property="quizResult" destination="e3a-Ga-j8I" id="sF5-VK-IO8"/>
                                     <outlet property="quizTitle" destination="sV6-Ok-66T" id="nNz-VG-Mg9"/>
+                                    <segue destination="DM7-mv-2WL" kind="custom" identifier="QuestionViewController" id="cao-nt-7Qv"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -93,7 +94,7 @@
         <!--Question View Controller-->
         <scene sceneID="Q7i-0u-1yD">
             <objects>
-                <viewController storyboardIdentifier="QuestionViewController" id="DM7-mv-2WL" customClass="QuestionViewController" customModule="QuizApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="QuestionVC" id="DM7-mv-2WL" customClass="QuestionViewController" customModule="QuizApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="eJp-br-YBY"/>
                         <viewControllerLayoutGuide type="bottom" id="iYC-1d-ULd"/>
@@ -187,7 +188,7 @@
         <!--Quiz Result View Controller-->
         <scene sceneID="tyw-VO-g6b">
             <objects>
-                <viewController storyboardIdentifier="QuizResultViewController" id="BKf-V9-If5" customClass="QuizResultViewController" customModule="QuizApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="QuizResultVC" id="BKf-V9-If5" customClass="QuizResultViewController" customModule="QuizApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="TVV-Nf-fGo"/>
                         <viewControllerLayoutGuide type="bottom" id="5h3-ug-1vv"/>

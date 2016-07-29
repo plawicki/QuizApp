@@ -26,6 +26,7 @@ class QuizesTableViewController: UITableViewController, NSFetchedResultsControll
         
         return frc
     }()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -120,6 +121,7 @@ class QuizesTableViewController: UITableViewController, NSFetchedResultsControll
     
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        /*
         let quiz: Quiz = self.fetchedResultsController.objectAtIndexPath(indexPath) as! Quiz
         
         QuizDownloader.downloadQuizDataIfNotExistsLocaly(quiz.id){
@@ -129,14 +131,29 @@ class QuizesTableViewController: UITableViewController, NSFetchedResultsControll
             
             self.presentViewController(questionVC, animated: true, completion: nil)
         }
+ */
+        let quiz: Quiz = getClickedQuiz()
+        QuizDownloader.downloadQuizDataIfNotExistsLocaly(quiz.id)  {
+            self.performSegueWithIdentifier("QuestionViewController", sender: self)
+            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        }
     }
     
      // MARK: - Navigation
-/*
+
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let destionationViewController: QuestionViewController = segue.destinationViewController as QuestionViewController
-        destionationViewController.quiz = 
+        if segue.identifier == "QuestionViewController" {
+            if let indexPath = tableView.indexPathForSelectedRow, let quiz: Quiz = getClickedQuiz() {
+                let destinationVC: QuestionViewController = segue.destinationViewController as! QuestionViewController
+                destinationVC.quizId = quiz.id
+            }
+        }
     }
- */
+    
+    private func getClickedQuiz() ->  Quiz {
+        let quiz: Quiz = self.fetchedResultsController.objectAtIndexPath(tableView.indexPathForSelectedRow!) as! Quiz
+        
+        return quiz
+    }
 }
