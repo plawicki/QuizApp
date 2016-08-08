@@ -16,7 +16,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="quizCell" rowHeight="150" id="sdA-bj-NG9" customClass="QuizTableViewCell" customModule="QuizApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="320" height="150"/>
+                                <rect key="frame" x="0.0" y="28" width="320" height="150"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sdA-bj-NG9" id="LSP-ih-ujd">
                                     <rect key="frame" x="0.0" y="0.0" width="287" height="149"/>
@@ -78,7 +78,7 @@
         <!--Navigation Controller-->
         <scene sceneID="fEc-Ht-4y3">
             <objects>
-                <navigationController id="aZR-3e-QSQ" sceneMemberID="viewController">
+                <navigationController navigationBarHidden="YES" id="aZR-3e-QSQ" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Uap-i0-bvj">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
