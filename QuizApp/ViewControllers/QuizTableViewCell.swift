@@ -27,6 +27,7 @@ extension QuizTableViewCell: ConfigurableCell {
     func configureForObject(quiz: Quiz) {
         
         quizTitle.text = quiz.title
+        quizImage.image = nil
         
         if let imgUrl = quiz.imageUrl {
             quizImage.imageFromUrl(imgUrl)

@@ -28,11 +28,12 @@ extension UIImageView {
     }
     
     private func getImageNameFromUrl(urlString: String) -> String? {
-        guard let imageName = urlString.componentsSeparatedByString("/").last else {
-            print("ImageManager error, Cannot get image name from url")
+        let imageName = urlString.componentsSeparatedByString("/").joinWithSeparator("-")
+        
+        if imageName.isEmpty {
             return nil
         }
-        
+
         return imageName
     }
     
