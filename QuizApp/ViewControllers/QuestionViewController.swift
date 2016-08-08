@@ -30,7 +30,16 @@ class QuestionViewController: UIViewController {
     var answers: Array<Answer> = []
     var currentQuestion: Question?
     
+    /*
     override func viewDidLoad() {
+        setupVariables()
+        updateUIForQuestion()
+    }
+    */
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
         setupVariables()
         updateUIForQuestion()
     }
@@ -77,14 +86,18 @@ class QuestionViewController: UIViewController {
         answer1.setTitle(answers[0].text, forState: UIControlState.Normal)
         answer2.setTitle(answers[1].text, forState: UIControlState.Normal)
         
-        // Sometimes, questions have only two answers, so we hiding other buttons
+        // Sometimes, questions have only two or three answers, so we hiding other buttons
         if answers.count > 2 {
             answer3.setTitle(answers[2].text, forState: UIControlState.Normal)
-            answer4.setTitle(answers[3].text, forState: UIControlState.Normal)
             answer3.hidden = false
-            answer4.hidden = false
         } else {
             answer3.hidden = true
+        }
+        
+        if answers.count > 3 {
+            answer4.setTitle(answers[3].text, forState: UIControlState.Normal)
+            answer4.hidden = false
+        } else {
             answer4.hidden = true
         }
         
