@@ -27,11 +27,11 @@ class QuizResultViewController: UIViewController {
     }
 
     @IBAction func goToQuizTable(sender: AnyObject) {
-        performSegueWithIdentifier("ResultToRootSegue", sender: self)
+        self.navigationController?.popToRootViewControllerAnimated(true)
     }
     
     @IBAction func solveQuizAgain(sender: AnyObject) {
-        performSegueWithIdentifier("ResultToQuestionSegue", sender: self)
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
