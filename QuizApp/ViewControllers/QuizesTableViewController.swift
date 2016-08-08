@@ -26,6 +26,7 @@ class QuizesTableViewController: UITableViewController, NSFetchedResultsControll
         
         return frc
     }()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -120,23 +121,23 @@ class QuizesTableViewController: UITableViewController, NSFetchedResultsControll
     
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let quiz: Quiz = self.fetchedResultsController.objectAtIndexPath(indexPath) as! Quiz
-        
-        QuizDownloader.downloadQuizDataIfNotExistsLocaly(quiz.id){
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let questionVC = storyboard.instantiateViewControllerWithIdentifier("QuestionViewController") as! QuestionViewController
-            questionVC.quizId = quiz.id
-            
-            self.presentViewController(questionVC, animated: true, completion: nil)
-        }
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
      // MARK: - Navigation
-/*
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let destionationViewController: QuestionViewController = segue.destinationViewController as QuestionViewController
-        destionationViewController.quiz = 
+        if segue.identifier == "RootToQuestionSegue" {
+            if let quiz: Quiz = getClickedQuiz() {
+                let destinationVC: QuestionViewController = segue.destinationViewController as! QuestionViewController
+                destinationVC.quizId = quiz.id
+            }
+        }
     }
- */
+    
+    func getClickedQuiz() ->  Quiz {
+        let quiz: Quiz = self.fetchedResultsController.objectAtIndexPath(tableView.indexPathForSelectedRow!) as! Quiz
+        
+        return quiz
+    }
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="aZR-3e-QSQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="aZR-3e-QSQ">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -16,10 +16,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="quizCell" rowHeight="150" id="sdA-bj-NG9" customClass="QuizTableViewCell" customModule="QuizApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="320" height="150"/>
+                                <rect key="frame" x="0.0" y="28" width="320" height="150"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sdA-bj-NG9" id="LSP-ih-ujd">
-                                    <rect key="frame" x="0.0" y="0.0" width="287" height="149.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="149"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sV6-Ok-66T">
@@ -29,7 +29,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="exV-3S-cbv">
-                                            <rect key="frame" x="106" y="40" width="75" height="69.5"/>
+                                            <rect key="frame" x="106" y="40" width="75" height="70"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="75" id="1Zh-IE-bWt"/>
                                                 <constraint firstAttribute="height" constant="70" id="rpU-fS-kmJ"/>
@@ -60,6 +60,7 @@
                                     <outlet property="quizImage" destination="exV-3S-cbv" id="Ehg-hc-mzd"/>
                                     <outlet property="quizResult" destination="e3a-Ga-j8I" id="sF5-VK-IO8"/>
                                     <outlet property="quizTitle" destination="sV6-Ok-66T" id="nNz-VG-Mg9"/>
+                                    <segue destination="DM7-mv-2WL" kind="custom" identifier="RootToQuestionSegue" customClass="TableToQuestionSegue" customModule="QuizApp" customModuleProvider="target" id="oAi-2L-OSo"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -72,12 +73,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7w6-AV-Nau" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="296.5333333333333" y="227.19999999999996"/>
+            <point key="canvasLocation" x="-14" y="83"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fEc-Ht-4y3">
             <objects>
-                <navigationController id="aZR-3e-QSQ" sceneMemberID="viewController">
+                <navigationController navigationBarHidden="YES" id="aZR-3e-QSQ" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Uap-i0-bvj">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -88,12 +89,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3qN-wX-O7D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-140.80000000000001" y="227.19999999999996"/>
+            <point key="canvasLocation" x="-469" y="83"/>
         </scene>
         <!--Question View Controller-->
         <scene sceneID="Q7i-0u-1yD">
             <objects>
-                <viewController storyboardIdentifier="QuestionViewController" id="DM7-mv-2WL" customClass="QuestionViewController" customModule="QuizApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="QuestionVC" id="DM7-mv-2WL" customClass="QuestionViewController" customModule="QuizApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="eJp-br-YBY"/>
                         <viewControllerLayoutGuide type="bottom" id="iYC-1d-ULd"/>
@@ -178,16 +179,17 @@
                         <outlet property="answer4" destination="eAA-jo-AzO" id="obV-cr-a3L"/>
                         <outlet property="progressBar" destination="e69-IG-h5R" id="fSy-vz-yXm"/>
                         <outlet property="questionLabel" destination="2BN-1n-JMb" id="cdc-la-cLg"/>
+                        <segue destination="BKf-V9-If5" kind="push" identifier="QuestionToResultSegue" id="eAJ-Xq-fgH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gSR-1i-Ovf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-145" y="918"/>
+            <point key="canvasLocation" x="475" y="83"/>
         </scene>
         <!--Quiz Result View Controller-->
         <scene sceneID="tyw-VO-g6b">
             <objects>
-                <viewController storyboardIdentifier="QuizResultViewController" id="BKf-V9-If5" customClass="QuizResultViewController" customModule="QuizApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="QuizResultVC" id="BKf-V9-If5" customClass="QuizResultViewController" customModule="QuizApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="TVV-Nf-fGo"/>
                         <viewControllerLayoutGuide type="bottom" id="5h3-ug-1vv"/>
@@ -279,13 +281,14 @@
                             <constraint firstItem="SmY-os-VT5" firstAttribute="centerX" secondItem="Ioi-0I-Okn" secondAttribute="centerX" id="xsP-VC-lQT"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="NEA-SS-DQS"/>
                     <connections>
                         <outlet property="percentLabel" destination="vg5-va-mPv" id="Yce-tK-MkZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ebY-NA-cGz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="254" y="854"/>
+            <point key="canvasLocation" x="191" y="834"/>
         </scene>
     </scenes>
 </document>
